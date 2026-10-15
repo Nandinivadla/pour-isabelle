@@ -16,7 +16,6 @@
 }
 
 * { box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
 
 body {
@@ -28,6 +27,32 @@ body {
   overflow-x: hidden;
 }
 
+/* Light falling petals: only six, to keep the page smooth */
+.petal-layer {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .55;
+}
+.petal {
+  position: absolute;
+  top: -18px;
+  width: 8px;
+  height: 12px;
+  border-radius: 80% 15% 80% 15%;
+  background: #efb6cc;
+  animation: fall 18s linear infinite;
+}
+.petal:nth-child(2n) { background: #d8c9f5; }
+.petal:nth-child(3n) { background: #f2d99b; }
+
+@keyframes fall {
+  from { transform: translate3d(0,-20px,0) rotate(0deg); }
+  to { transform: translate3d(18px,105vh,0) rotate(240deg); }
+}
+
 button {
   font: inherit;
   cursor: pointer;
@@ -35,6 +60,8 @@ button {
 }
 
 .page {
+  position: relative;
+  z-index: 1;
   width: min(100% - 24px, 760px);
   margin: auto;
   padding: 22px 0 36px;
@@ -66,11 +93,7 @@ h1 {
   line-height: 1.04;
   letter-spacing: -.04em;
 }
-
-h1 span {
-  color: var(--rose);
-  font-style: italic;
-}
+h1 span { color: var(--rose); font-style: italic; }
 
 .subtitle {
   max-width: 510px;
@@ -114,11 +137,7 @@ h2 {
 }
 
 p { line-height: 1.7; }
-
-.intro-copy {
-  color: var(--muted);
-  margin: 0;
-}
+.intro-copy { color: var(--muted); margin: 0; }
 
 .riddle {
   background: linear-gradient(135deg, #fff2f7, #f5f0ff);
@@ -126,11 +145,7 @@ p { line-height: 1.7; }
   padding: 17px;
   margin-top: 16px;
 }
-
-.riddle-question {
-  font-weight: 750;
-  margin: 0 0 12px;
-}
+.riddle-question { font-weight: 750; margin: 0 0 12px; }
 
 .answer-list {
   display: grid;
@@ -151,7 +166,6 @@ p { line-height: 1.7; }
   border: 1px solid #f0dbe5;
   font-weight: 650;
 }
-
 .choice:hover { background: #fff7fb; }
 
 .primary {
@@ -188,24 +202,14 @@ button:focus-visible {
   background: #fffaf2;
   border: 1px solid #f6e7d0;
 }
-
-.cat {
-  font-size: 2.8rem;
-  flex: 0 0 auto;
-}
-
+.cat { font-size: 2.8rem; flex: 0 0 auto; }
 .cat-text { flex: 1; }
-
 .cat-text p {
   margin: 4px 0 10px;
   color: var(--muted);
   font-size: .94rem;
 }
-
-.small-button {
-  padding: 9px 12px;
-  font-size: .9rem;
-}
+.small-button { padding: 9px 12px; font-size: .9rem; }
 
 .feelings {
   display: grid;
@@ -227,12 +231,10 @@ button:focus-visible {
   min-height: 54px;
   font-weight: 700;
 }
-
 .feeling:hover {
   border-color: #e5a8c2;
   background: #fff8fb;
 }
-
 .feeling .emoji { font-size: 1.25rem; }
 
 .message-panel {
@@ -243,16 +245,13 @@ button:focus-visible {
   background: linear-gradient(135deg, #fff0f6, #f3efff);
   border: 1px solid #f0dce9;
 }
-
 .message-panel.show { display: block; }
-
 .message-panel h3 {
   margin: 0 0 8px;
   font-family: Georgia, serif;
   font-size: 1.4rem;
   font-weight: 500;
 }
-
 .message-panel p { margin: 0; }
 
 .ending {
@@ -260,20 +259,15 @@ button:focus-visible {
   text-align: center;
   background: linear-gradient(145deg, #fff4f8, #fffaf1 55%, #f1edff);
 }
-
 .ending.show { display: block; }
-
 .ending .heart { font-size: 1.8rem; }
-
 .ending h2 { margin-top: 9px; }
-
 .ending-note {
   max-width: 560px;
   margin: 0 auto;
   font-size: 1.04rem;
   white-space: pre-line;
 }
-
 .signature {
   margin-top: 18px;
   color: var(--rose);
@@ -281,7 +275,6 @@ button:focus-visible {
   font-style: italic;
   font-size: 1.2rem;
 }
-
 .ending-flowers {
   font-size: 1.5rem;
   letter-spacing: .18em;
@@ -308,24 +301,18 @@ footer {
     width: calc(100% - 18px);
     padding-top: 10px;
   }
-
   .card {
     border-radius: 20px;
     padding: 20px 16px;
   }
-
   .answer-list { grid-template-columns: 1fr; }
-
   .cat-area {
     align-items: flex-start;
     gap: 12px;
     padding: 13px;
   }
-
   .cat { font-size: 2.5rem; }
-
   .feelings { grid-template-columns: 1fr; }
-
   .feeling { min-height: 50px; }
 }
 
@@ -337,6 +324,16 @@ footer {
 </head>
 
 <body>
+
+<div class="petal-layer" aria-hidden="true">
+  <span class="petal" style="left:8%;animation-delay:-3s"></span>
+  <span class="petal" style="left:22%;animation-delay:-12s"></span>
+  <span class="petal" style="left:39%;animation-delay:-7s"></span>
+  <span class="petal" style="left:57%;animation-delay:-15s"></span>
+  <span class="petal" style="left:71%;animation-delay:-5s"></span>
+  <span class="petal" style="left:88%;animation-delay:-10s"></span>
+</div>
+
 <main class="page">
 
 <header>
@@ -421,20 +418,28 @@ footer {
 
 <section class="card ending" id="ending" aria-live="polite">
   <div class="heart" aria-hidden="true">💗</div>
-  <p class="section-label">Juste parce que…</p>
-  <h2>Il n’y a pas d’occasion spéciale !</h2>
+  <p class="section-label">Un petit rappel, juste pour vous</p>
+  <h2>Isabelle, vous méritez d’être appréciée chaque jour.</h2>
 
-  <p class="ending-note">Aujourd’hui, ce n’est ni votre anniversaire, ni une fête, ni une occasion particulière… ahaha !
+  <p class="ending-note">Aujourd’hui, il n’y a aucune occasion particulière.
 
-Mais alors, pourquoi attendre une occasion spéciale pour vous dire que vous êtes une personne formidable ?
+Ce n’est ni votre anniversaire, ni une fête, ni un jour spécial… et c’est justement ce qui rend ce petit message spécial. Aha !
 
-Vous méritez d’être appréciée, aimée et entourée de douceur tous les jours, pas seulement les jours de fête.
+Parce que pourquoi faudrait-il attendre une occasion particulière pour dire à quelqu’un qu’il compte pour nous ?
 
-Alors voilà, Isabelle : ce petit message est juste là pour vous rappeler que vous êtes précieuse et que vous méritez qu’on vous le dise chaque jour.
+Isabelle, vous êtes une personne attachante, précieuse et unique. Vous méritez les petites attentions, les sourires sincères, les mots gentils et les moments qui réchauffent le cœur, même lors des journées les plus ordinaires.
 
-Parce que vous êtes vous, tout simplement.</p>
+Vous méritez qu’on vous rappelle que vous êtes appréciée, pas seulement quand il y a quelque chose à célébrer, mais aussi un lundi tout simple, un mercredi tranquille, ou un jour où vous ne vous y attendez absolument pas.
 
-  <p class="signature">Pas besoin d’occasion pour vous apprécier !</p>
+Vous n’avez pas besoin de faire quelque chose d’extraordinaire pour mériter de l’affection. Vous n’avez pas besoin d’une raison particulière pour être importante aux yeux des personnes qui vous aiment.
+
+Alors aujourd’hui, ce petit coin est simplement là pour vous. Pas de cadeau à ouvrir, pas de fête à organiser, aucune raison à inventer.
+
+Juste un petit message pour vous dire : vous êtes appréciée, vous méritez de la douceur, et vous méritez qu’on vous le rappelle chaque jour.
+
+Et voilà… maintenant, vous savez pourquoi cette petite page existe, même sans occasion spéciale ! Aha !</p>
+
+  <p class="signature">Pas besoin d’occasion pour vous apprécier, Isabelle. 💕</p>
   <div class="ending-flowers" aria-hidden="true">🌷 🌼 🌸 🌻</div>
 </section>
 
@@ -453,7 +458,8 @@ Parce que vous êtes vous, tout simplement.</p>
 
 <script>
 (function () {
-  // Devinette
+
+  // Devinette gourmande
   document.querySelectorAll('.choice').forEach(function (button) {
     button.addEventListener('click', function () {
       var feedback = document.getElementById('riddleFeedback');
@@ -488,34 +494,40 @@ Parce que vous êtes vous, tout simplement.</p>
     }
   });
 
-  // Messages personnalisés selon l’humeur
+  // Messages longs et personnalisés selon l’humeur
   var messages = {
     sad: {
-      title: 'Pour les jours un peu gris',
-      text: 'Vous n’avez pas besoin de faire semblant d’aller bien. Prenez votre temps, respirez doucement et soyez tendre avec vous-même. Même les journées grises laissent passer un peu de lumière. Vous méritez de la douceur, vous aussi.'
+      title: 'Pour vous, même les jours gris',
+      text: 'Isabelle, si aujourd’hui votre cœur est un peu lourd, vous n’avez pas besoin de prétendre que tout va bien. Vous avez le droit d’être triste, de vous sentir fatiguée émotionnellement ou simplement d’avoir besoin d’un peu de calme. Vous n’avez pas à tout régler aujourd’hui. Prenez une petite respiration, accordez-vous du temps et rappelez-vous que les journées difficiles ne durent pas toujours. Même quand vous ne voyez pas le soleil, il est toujours là quelque part. Vous méritez qu’on prenne soin de vous aussi. Alors, aujourd’hui, soyez aussi douce avec vous-même que vous le seriez avec quelqu’un que vous aimez.'
     },
+
     happy: {
-      title: 'Gardons cette lumière',
-      text: 'Votre joie mérite d’être savourée ! Profitez de ce petit bonheur, même s’il semble tout simple. Si vous le pouvez, partagez votre sourire avec quelqu’un : la bonne humeur a une jolie façon de se multiplier.'
+      title: 'Gardez ce joli sourire, Isabelle !',
+      text: 'Ah, voilà quelqu’un qui apporte un peu de soleil ! Profitez de cette joie sans vous demander combien de temps elle va durer. Savourez les petites choses, les conversations agréables, les moments tranquilles et les fous rires inattendus. Vous n’avez pas besoin d’une grande réussite pour avoir le droit d’être heureuse. Parfois, un bon repas, une petite promenade ou une blague complètement idiote suffisent à rendre une journée magnifique. Et si vous souriez en lisant ce message, mission accomplie ! Essayez de garder un petit morceau de cette joie pour les jours où vous en aurez davantage besoin.'
     },
+
     confused: {
-      title: 'Un pas après l’autre',
-      text: 'Vous n’avez pas besoin de tout comprendre immédiatement. Faites une pause, prenez une grande inspiration et choisissez seulement la prochaine petite étape. Une chose à la fois, c’est déjà très bien.'
+      title: 'Doucement, une chose à la fois',
+      text: 'Isabelle, il est normal de ne pas toujours savoir quoi penser, quoi décider ou quelle direction prendre. Vous n’avez pas besoin d’avoir toutes les réponses immédiatement. Parfois, nous réfléchissons tellement que même les choses simples deviennent compliquées ! Faites une pause, laissez un peu de place au calme et concentrez-vous sur une seule petite étape. Vous pouvez demander de l’aide, changer d’avis et prendre le temps de comprendre ce que vous ressentez. Une décision n’a pas besoin d’être parfaite pour être un bon début. Vous n’êtes pas obligée de tout résoudre aujourd’hui. Allez doucement : vous avez le droit d’avancer à votre rythme.'
     },
+
     lost: {
-      title: 'Vous pouvez prendre votre temps',
-      text: 'Il arrive à tout le monde de ne plus trop savoir dans quelle direction aller. Vous n’avez pas à trouver toutes les réponses aujourd’hui. Reposez-vous sur les personnes qui vous veulent du bien et avancez doucement, à votre rythme.'
+      title: 'Même sans connaître le chemin, vous pouvez avancer',
+      text: 'Il arrive parfois de se sentir perdue, même lorsque tout semble normal autour de nous. On peut se poser beaucoup de questions, ne plus savoir ce qu’on veut ou avoir l’impression que tout le monde a trouvé son chemin sauf nous. Mais Isabelle, la vie n’est pas une course et personne ne possède une carte parfaite. Vous n’avez pas échoué parce que vous hésitez. Vous êtes simplement humaine. Prenez le temps de vous écouter, rapprochez-vous des personnes auprès desquelles vous vous sentez bien et faites le prochain petit pas lorsque vous serez prête. Vous n’avez pas besoin de connaître toute la route pour continuer. Parfois, il suffit de trouver le prochain endroit où poser le pied.'
     },
+
     tired: {
-      title: 'Le repos est aussi une réussite',
-      text: 'Vous avez le droit de ralentir. Posez ce qui peut attendre, installez-vous confortablement et accordez-vous un vrai moment de repos. Vous n’avez pas besoin de tout accomplir pour mériter une pause.'
+      title: 'Aujourd’hui, vous avez le droit de souffler',
+      text: 'Isabelle, vous n’êtes pas une machine qui doit fonctionner sans arrêt ! Vous avez le droit d’être fatiguée, de remettre certaines choses à demain et de ne rien faire pendant un petit moment. Votre valeur ne dépend pas de tout ce que vous accomplissez dans une journée. Vous n’avez pas besoin d’être productive chaque minute pour mériter de vous reposer. Prenez une boisson que vous aimez, installez-vous confortablement, laissez vos épaules se détendre et accordez-vous une pause sans culpabilité. Le monde peut attendre quelques instants. Aujourd’hui, votre seule mission pourrait être de vous sentir un peu mieux. Et franchement, cette mission est déjà suffisante.'
     },
+
     tease: {
-      title: 'Opération : taquiner Olivier',
-      text: 'Mission du jour : un petit sourire innocent, une remarque bien placée… puis faites comme si vous n’aviez rien fait ! Mais attention : gardez toujours une bonne dose de tendresse avec la malice.'
+      title: 'Alerte : Olivier risque de ne pas être tranquille !',
+      text: 'Ahaha ! Donc aujourd’hui, vous avez choisi la malice ! Très bien, Isabelle, préparons l’opération. Étape numéro un : gardez un visage parfaitement innocent. Étape numéro deux : lancez une petite remarque taquine au moment le plus inattendu. Étape numéro trois : regardez Olivier avec votre plus beau sourire et demandez : « Moi ? Mais qu’est-ce que j’ai fait ? » Attention cependant : l’objectif est de provoquer un fou rire, pas une guerre mondiale dans le salon ! Gardez votre humour, votre tendresse et votre talent pour taquiner les gens que vous aimez. Mission officielle : faire sourire Olivier aujourd’hui. Bonne chance, agente Isabelle !'
     }
   };
 
+  // Afficher le message choisi et le message final
   document.querySelectorAll('.feeling').forEach(function (button) {
     button.addEventListener('click', function () {
       var message = messages[button.dataset.feeling];
@@ -562,6 +574,7 @@ Parce que vous êtes vous, tout simplement.</p>
     if (!audioContext || !melodyOn) return;
 
     var now = audioContext.currentTime;
+
     [523.25, 659.25, 783.99, 659.25, 587.33, 698.46].forEach(
       function (frequency, index) {
         playNote(frequency, now + index * 0.42, 0.34);
@@ -572,10 +585,12 @@ Parce que vous êtes vous, tout simplement.</p>
   calmButton.addEventListener('click', async function () {
     if (!melodyOn) {
       try {
-        var AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        var AudioContextClass =
+          window.AudioContext || window.webkitAudioContext;
 
         if (!AudioContextClass) {
-          calmButton.textContent = 'Mélodie non disponible sur cet appareil';
+          calmButton.textContent =
+            'Mélodie non disponible sur cet appareil';
           return;
         }
 
@@ -586,28 +601,32 @@ Parce que vous êtes vous, tout simplement.</p>
         }
 
         melodyOn = true;
-        calmButton.textContent = '♫ Petite mélodie douce : activée';
+        calmButton.textContent =
+          '♫ Petite mélodie douce : activée';
 
         playPhrase();
         melodyTimer = window.setInterval(playPhrase, 3200);
       } catch (error) {
-        calmButton.textContent = 'La mélodie n’est pas disponible';
+        calmButton.textContent =
+          'La mélodie n’est pas disponible';
       }
     } else {
       melodyOn = false;
       window.clearInterval(melodyTimer);
-      calmButton.textContent = '♫ Petite mélodie douce : désactivée';
+      calmButton.textContent =
+        '♫ Petite mélodie douce : désactivée';
     }
   });
 
-  // Recommencer
+  // Recommencer le jeu
   document.getElementById('againButton').addEventListener('click', function () {
     document.getElementById('riddleFeedback').textContent = '';
 
     document.getElementById('cat').textContent = '🐱';
     document.getElementById('catText').textContent =
       'Appuyez sur le bouton pour lui donner une petite friandise. Il vous attend avec son plus beau regard.';
-    document.getElementById('feedCat').textContent = 'Miaou ! Donner à manger';
+    document.getElementById('feedCat').textContent =
+      'Miaou ! Donner à manger';
 
     fed = false;
 
@@ -619,6 +638,7 @@ Parce que vous êtes vous, tout simplement.</p>
       block: 'start'
     });
   });
+
 })();
 </script>
 </body>
