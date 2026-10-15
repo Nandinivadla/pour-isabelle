@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff4f7">
+<meta name="description" content="Un petit jardin de douceur, de sourires et de surprises pour Isabelle.">
+<title>Un petit monde pour Isabelle 🌷</title>
+<style>
+:root{--rose:#e88eaa;--rose-dark:#a64d70;--cream:#fffaf5;--ink:#543e4a;--lav:#eee8ff;--mint:#e6f5eb;--gold:#f5d78b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:ui-rounded,"Avenir Next",Avenir,system-ui,-apple-system,sans-serif;color:var(--ink);background:radial-gradient(circle at 10% 5%,#ffe8ef 0,transparent 28rem),radial-gradient(circle at 95% 25%,#eee8ff 0,transparent 28rem),var(--cream);line-height:1.6;overflow-x:hidden}
+button{font:inherit;cursor:pointer;border:0;transition:transform .2s,box-shadow .2s}
+button:hover{transform:translateY(-2px)}
+button:focus-visible{outline:3px solid #8c5bb7;outline-offset:3px}
+.wrap{width:min(1080px,92%);margin:auto}
+header{padding:18px 0;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand{font-weight:800;letter-spacing:.02em;color:var(--rose-dark)}
+.music{background:#fff;border:1px solid #f0d7e0;border-radius:999px;padding:10px 14px;color:var(--rose-dark);box-shadow:0 5px 20px #a64d7010}
+.hero{position:relative;text-align:center;padding:52px 0 42px;min-height:470px;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.eyebrow{display:inline-block;background:#fff9;border:1px solid #f2d5df;border-radius:999px;padding:6px 13px;font-size:.88rem;color:var(--rose-dark)}
+h1{font-size:clamp(2.5rem,8vw,5rem);line-height:1.03;letter-spacing:-.055em;margin:20px 0 16px;max-width:850px}
+h1 span{color:var(--rose-dark);font-family:Georgia,serif;font-style:italic;font-weight:500}
+.hero p{font-size:clamp(1rem,2.5vw,1.2rem);max-width:610px;margin:0 auto 24px;color:#755d68}
+.actions{display:flex;flex-wrap:wrap;justify-content:center;gap:11px}
+.btn{padding:12px 18px;border-radius:999px;font-weight:750;box-shadow:0 8px 22px #a64d701a}
+.primary{background:var(--rose-dark);color:white}
+.secondary{background:white;color:var(--rose-dark);border:1px solid #f0d7e0}
+.flower-field{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:-1}
+.float-flower{position:absolute;font-size:clamp(1.7rem,4vw,3.1rem);animation:float 5s ease-in-out infinite;filter:drop-shadow(0 5px 5px #9b4d7010)}
+.f1{left:7%;top:20%;animation-delay:-1s}.f2{right:8%;top:17%;animation-delay:-2s}.f3{left:15%;bottom:9%;animation-delay:-3s}.f4{right:14%;bottom:7%;animation-delay:-.5s}.f5{right:28%;top:4%;animation-delay:-4s}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-15px) rotate(7deg)}}
+section{padding:42px 0}
+.section-head{text-align:center;margin:0 auto 24px;max-width:680px}
+h2{font-size:clamp(1.7rem,5vw,2.5rem);letter-spacing:-.035em;line-height:1.15;margin:0 0 10px}
+.section-head p{margin:0;color:#806977}
+.mood-switch{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:22px 0}
+.mood-btn{padding:10px 15px;border-radius:999px;background:white;color:#755d68;border:1px solid #ead9e0}
+.mood-btn.active{background:#f7dce6;border-color:#e8a5bc;color:#8e3e60;font-weight:800}
+.message-card{max-width:720px;margin:auto;background:#fff;border:1px solid #f0dce4;border-radius:28px;padding:clamp(22px,5vw,38px);text-align:center;box-shadow:0 18px 55px #774b6010;position:relative;overflow:hidden}
+.message-card:before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:#fff0f5;top:-100px;right:-80px}
+.message-emoji{font-size:2.5rem;position:relative}
+.message-card h3{font-size:1.35rem;margin:8px 0;color:var(--rose-dark);position:relative}
+.message-card p{font-family:Georgia,serif;font-size:clamp(1.1rem,3vw,1.4rem);margin:0 auto 20px;max-width:560px;position:relative}
+.message-card .btn{position:relative}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.note{background:#fff;border:1px solid #f1e0e6;border-radius:22px;padding:21px 18px;min-height:180px;box-shadow:0 12px 30px #774b6008}
+.note .note-icon{font-size:1.8rem}
+.note h3{margin:6px 0 8px;font-size:1.08rem}
+.note p{margin:0;color:#806977;font-size:.96rem}
+.note button{margin-top:13px;background:#fff0f5;color:#974563;padding:9px 13px;border-radius:999px;font-weight:750}
+.hidden-note{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed #eac5d3;color:#8d4562;font-family:Georgia,serif}
+.hidden-note.show{display:block;animation:reveal .35s ease}
+@keyframes reveal{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.garden{background:linear-gradient(135deg,#fff0f5,#f3efff);border:1px solid #f0dce8;border-radius:30px;padding:28px;text-align:center}
+.flower-buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:18px 0}
+.flower-button{background:#fff;border:1px solid #f0dce4;border-radius:20px;padding:14px 18px;min-width:92px;box-shadow:0 8px 20px #774b6008}
+.flower-button span{display:block;font-size:2.1rem;transition:transform .3s}
+.flower-button:hover span{transform:scale(1.2) rotate(10deg)}
+#gardenMessage{min-height:54px;font-family:Georgia,serif;font-size:1.15rem;color:#8e4565;margin:14px auto 0;max-width:620px}
+.footer{text-align:center;padding:35px 0 45px;color:#907b86;font-size:.92rem}
+.heart{display:inline-block;color:#d76d94;animation:heartbeat 1.5s ease-in-out infinite}
+@keyframes heartbeat{50%{transform:scale(1.25)}}
+.confetti{position:fixed;top:-30px;pointer-events:none;z-index:10;animation:fall 2.8s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(600deg);opacity:.15}}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#553e4a;color:white;padding:11px 17px;border-radius:999px;box-shadow:0 8px 28px #0002;z-index:20;max-width:90%;text-align:center}
+@media(max-width:700px){header{padding:14px 0}.hero{padding:42px 0 35px;min-height:440px}.f1{left:1%}.f2{right:1%}.f3{left:4%}.f4{right:3%}.grid{grid-template-columns:1fr}.note{min-height:0}.garden{padding:23px 15px}section{padding:32px 0}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="brand">🌷 Un petit monde pour Isabelle</div>
+  <button class="music" id="musicButton" aria-pressed="false">♫ Musique douce : arrêtée</button>
+</header>
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="flower-field" aria-hidden="true">
+      <span class="float-flower f1">🌸</span><span class="float-flower f2">🌼</span><span class="float-flower f3">🌷</span><span class="float-flower f4">🌺</span><span class="float-flower f5">✨</span>
+    </div>
+    <span class="eyebrow">Une petite pause rien que pour vous</span>
+    <h1 id="hero-title">Bonjour, <span>Isabelle</span> 💗</h1>
+    <p>Le monde va parfois trop vite. Alors voici un petit coin de douceur, de fleurs et de sourires — juste pour vous rappeler que vous comptez beaucoup.</p>
+    <div class="actions">
+      <button class="btn primary" id="surpriseButton">✨ Offrez-moi une surprise</button>
+      <button class="btn secondary" id="bloomButton">🌷 Faire fleurir le jardin</button>
+    </div>
+  </section>
+
+  <section id="surprises">
+    <div class="section-head">
+      <h2>Un petit mot pour le cœur</h2>
+      <p>Choisissez l’ambiance du moment. Il y a de la tendresse… et un peu de malice aussi !</p>
+      <div class="mood-switch" role="group" aria-label="Choisir une ambiance">
+        <button class="mood-btn active" data-mood="tendre" aria-pressed="true">❤️ Doux et tendre</button>
+        <button class="mood-btn" data-mood="drôle" aria-pressed="false">😂 Drôle et léger</button>
+      </div>
+    </div>
+    <div class="message-card" aria-live="polite">
+      <div class="message-emoji" id="messageEmoji">💌</div>
+      <h3 id="messageTitle">Un petit rappel</h3>
+      <p id="messageText">Isabelle, vous méritez des journées remplies de douceur, de petites joies et de gens qui vous font du bien.</p>
+      <button class="btn secondary" id="nextMessage">Un autre petit mot 💌</button>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Des petits mots cachés 💝</h2>
+      <p>Chaque enveloppe cache une pensée. Ouvrez-les quand vous en avez envie.</p>
+    </div>
+    <div class="grid">
+      <article class="note">
+        <div class="note-icon">🌷</div><h3>Pour les jours gris</h3>
+        <p>Une petite pensée pour remettre un peu de lumière dans la journée.</p>
+        <button class="reveal-button" aria-expanded="false">Ouvrir le mot</button>
+        <div class="hidden-note">Même les plus beaux jardins ont des jours de pluie. Cela ne les empêche jamais de refleurir. Prenez votre temps, Isabelle. 🌦️</div>
+      </article>
+      <article class="note">
+        <div class="note-icon">💗</div><h3>Pour se rappeler sa valeur</h3>
+        <p>À lire chaque fois que vous oubliez combien vous êtes précieuse.</p>
+        <button class="reveal-button" aria-expanded="false">Ouvrir le mot</button>
+        <div class="hidden-note">Votre présence, votre histoire et votre façon d’être ont de la valeur. Vous n’avez pas besoin d’être parfaite pour être aimée.</div>
+      </article>
+      <article class="note">
+        <div class="note-icon">😄</div><h3>Pour rire un peu</h3>
+        <p>Une petite dose de sourire, sans ordonnance !</p>
+        <button class="reveal-button" aria-expanded="false">Ouvrir le mot</button>
+        <div class="hidden-note">Programme du jour : boire quelque chose de bon, sourire au moins une fois, et ignorer les problèmes qui n’ont pas pris rendez-vous. 😄☕</div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="garden">
+      <div class="section-head">
+        <h2>Votre jardin de petits bonheurs 🌼</h2>
+        <p>Touchez une fleur pour découvrir un petit souhait. Chaque fleur a son message.</p>
+      </div>
+      <div class="flower-buttons">
+        <button class="flower-button" data-flower="🌷"><span>🌷</span>Douceur</button>
+        <button class="flower-button" data-flower="🌻"><span>🌻</span>Joie</button>
+        <button class="flower-button" data-flower="🌼"><span>🌼</span>Chance</button>
+        <button class="flower-button" data-flower="🌸"><span>🌸</span>Tendresse</button>
+        <button class="flower-button" data-flower="🍀"><span>🍀</span>Espoir</button>
+      </div>
+      <p id="gardenMessage" aria-live="polite">Votre jardin attend son premier petit clic…</p>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  Fait avec beaucoup d’affection <span class="heart">♥</span> pour Isabelle.<br>
+  <small>Un petit sourire à la fois. Revenez quand vous voulez. 🌸</small>
+</footer>
+</div>
+<script>
+const messages = {
+ tendre: [
+  ["💗","Vous comptez","Isabelle, vous méritez des journées remplies de douceur, de petites joies et de gens qui vous font du bien."],
+  ["🌷","Prenez votre temps","Vous n’avez pas besoin de tout régler aujourd’hui. Un pas à la fois, une respiration à la fois, c’est déjà très bien."],
+  ["☀️","Une lumière bien à vous","Même quand la journée semble ordinaire, votre présence peut rendre le monde plus chaleureux."],
+  ["🫶","Un petit rappel","Vous avez le droit de vous reposer, de dire non, de rire fort et de prendre soin de vous aussi."],
+  ["🦋","Les jours changent","Les émotions passent comme les nuages. Laissez-vous un peu de douceur en attendant le soleil."],
+  ["🌸","Juste pour vous","Que cette journée vous apporte une bonne nouvelle, un moment paisible et une raison de sourire."]
+ ],
+ drôle: [
+  ["😂","Mission du jour","Objectif officiel : être merveilleuse. Objectif secondaire : trouver un bon goûter. Le reste peut attendre !"],
+  ["☕","Conseil très sérieux","En cas de journée compliquée, appliquer une dose de boisson préférée, deux respirations profondes et un sourire. Renouveler si nécessaire."],
+  ["👑","La cheffe, c’est vous","Aujourd’hui, vous êtes directrice générale de votre tranquillité. Les soucis doivent prendre rendez-vous."],
+  ["🐢","Mode tortue activé","Allez à votre rythme. Même les tortues arrivent à destination — et elles ne courent jamais après le bus."],
+  ["🌼","Alerte importante","Une personne adorable est en train de lire ce message. Oui, Isabelle, on parle bien de vous !"],
+  ["🍰","Priorités de la journée","1. Respirer. 2. Sourire. 3. Manger quelque chose de bon. 4. Recommencer si la journée insiste."]
+ ]
+};
+let mood = "tendre", indices = {tendre:0, drôle:0};
+const $ = id => document.getElementById(id);
+function showMessage(next=true){
+ const list=messages[mood];
+ if(next) indices[mood]=(indices[mood]+1)%list.length;
+ const [emoji,title,body]=list[indices[mood]];
+ $("messageEmoji").textContent=emoji; $("messageTitle").textContent=title; $("messageText").textContent=body;
+}
+document.querySelectorAll(".mood-btn").forEach(btn=>btn.addEventListener("click",()=>{
+ mood=btn.dataset.mood;
+ document.querySelectorAll(".mood-btn").forEach(b=>{const active=b===btn;b.classList.toggle("active",active);b.setAttribute("aria-pressed",String(active));});
+ showMessage(false);
+}));
+$("nextMessage").addEventListener("click",()=>{showMessage(true);sprinkle(7);});
+$("surpriseButton").addEventListener("click",()=>{showMessage(true);$("surprises").scrollIntoView({behavior:"smooth",block:"center"});sprinkle(14);});
+document.querySelectorAll(".reveal-button").forEach(btn=>btn.addEventListener("click",()=>{
+ const note=btn.nextElementSibling, opening=!note.classList.contains("show");
+ note.classList.toggle("show",opening);btn.textContent=opening?"Refermer le mot":"Ouvrir le mot";btn.setAttribute("aria-expanded",String(opening));
+ if(opening) sprinkle(5);
+}));
+const flowerMessages={
+ "🌷":"Je vous souhaite une journée douce, avec du temps pour vous et de petites choses qui font du bien.",
+ "🌻":"Que votre sourire revienne comme le soleil après la pluie. Vous le méritez !",
+ "🌼":"Que la chance vous surprenne aujourd’hui — idéalement avec une bonne nouvelle et un dessert.",
+ "🌸":"Un peu de tendresse pour le cœur, un peu de calme pour l’esprit, et beaucoup d’affection autour de vous.",
+ "🍀":"Même les petits commencements peuvent mener à de jolies choses. Gardez une place pour l’espoir."
+};
+document.querySelectorAll(".flower-button").forEach(btn=>btn.addEventListener("click",()=>{
+ $("gardenMessage").textContent=flowerMessages[btn.dataset.flower];btn.querySelector("span").animate([{transform:"scale(1)"},{transform:"scale(1.35) rotate(12deg)"},{transform:"scale(1)"}],{duration:450});sprinkle(6);
+}));
+function sprinkle(count=10){
+ if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+ const symbols=["🌸","💗","✨","🌼","🌷"];
+ for(let i=0;i<count;i++){const el=document.createElement("span");el.className="confetti";el.textContent=symbols[Math.floor(Math.random()*symbols.length)];el.style.left=Math.random()*100+"vw";el.style.animationDelay=(Math.random()*.6)+"s";el.style.fontSize=(16+Math.random()*18)+"px";document.body.appendChild(el);setTimeout(()=>el.remove(),3500);}
+}
+$("bloomButton").addEventListener("click",()=>{sprinkle(28);$("gardenMessage").textContent="Et voilà, Isabelle : un petit jardin qui fleurit rien que pour vous ! 🌷💗";document.querySelector(".garden").scrollIntoView({behavior:"smooth",block:"center"});});
+
+// Optional, locally generated gentle tones. Nothing plays until the visitor taps the music button.
+let audioContext=null, masterGain=null, musicTimer=null, musicOn=false, noteIndex=0;
+const notes=[261.63,329.63,392.00,329.63,293.66,349.23,440.00,349.23];
+function playTone(){
+ if(!musicOn||!audioContext)return;
+ const osc=audioContext.createOscillator(), gain=audioContext.createGain();
+ osc.type="sine";osc.frequency.value=notes[noteIndex%notes.length];noteIndex++;
+ gain.gain.setValueAtTime(.0001,audioContext.currentTime);
+ gain.gain.exponentialRampToValueAtTime(.035,audioContext.currentTime+.12);
+ gain.gain.exponentialRampToValueAtTime(.0001,audioContext.currentTime+1.4);
+ osc.connect(gain);gain.connect(masterGain);osc.start();osc.stop(audioContext.currentTime+1.45);
+}
+async function toggleMusic(){
+ if(!musicOn){
+  const AudioCtx=window.AudioContext||window.webkitAudioContext;
+  if(!AudioCtx){showToast("La musique n’est pas disponible sur ce navigateur.");return;}
+  audioContext=audioContext||new AudioCtx();await audioContext.resume();masterGain=audioContext.createGain();masterGain.gain.value=.7;masterGain.connect(audioContext.destination);
+  musicOn=true;playTone();musicTimer=setInterval(playTone,900);
+  $("musicButton").textContent="♫ Musique douce : en cours";$("musicButton").setAttribute("aria-pressed","true");
+ }else{
+  musicOn=false;clearInterval(musicTimer);$("musicButton").textContent="♫ Musique douce : arrêtée";$("musicButton").setAttribute("aria-pressed","false");
+ }
+}
+$("musicButton").addEventListener("click",toggleMusic);
+function showToast(message){
+ const old=document.querySelector(".toast");if(old)old.remove();
+ const el=document.createElement("div");el.className="toast";el.textContent=message;document.body.appendChild(el);setTimeout(()=>el.remove(),2500);
+}
+</script>
+</body>
+</html>
