@@ -1,25 +1,625 @@
-<section class="card ending" id="ending" aria-live="polite">
-  <div class="big-heart" aria-hidden="true">💗</div>
-  <p class="section-label">Juste parce que… 🌷</p>
-  <h2>Il n’y a pas d’occasion spéciale ! 😂</h2>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff7fa">
+<title>Un petit moment pour Isabelle</title>
 
-  <p class="ending-note">
-    Aujourd’hui, ce n’est ni votre anniversaire, ni une fête,
-    ni une occasion particulière… ahaha ! 😂💐
+<style>
+:root {
+  --ink: #493a50;
+  --muted: #786779;
+  --rose: #c65d88;
+  --card: rgba(255,255,255,.96);
+  --shadow: 0 12px 32px rgba(119,78,112,.10);
+}
 
-    Mais alors, pourquoi attendre une occasion spéciale pour
-    vous dire que vous êtes une personne formidable ?
+* { box-sizing: border-box; }
 
-    Vous méritez d’être appréciée, aimée et entourée de douceur
-    tous les jours, pas seulement les jours de fête. 💗
+html { scroll-behavior: smooth; }
 
-    Alors voilà, Isabelle : ce petit message est juste là pour
-    vous rappeler que vous êtes précieuse et que vous méritez
-    qu’on vous le dise chaque jour.
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+  background: linear-gradient(145deg, #fff8f2, #fff2f7 58%, #f5f1ff);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 
-    Parce que vous êtes vous, tout simplement. 🥰
+button {
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.page {
+  width: min(100% - 24px, 760px);
+  margin: auto;
+  padding: 22px 0 36px;
+}
+
+header {
+  text-align: center;
+  padding: 18px 8px 14px;
+}
+
+.eyebrow {
+  display: inline-block;
+  padding: 7px 13px;
+  border: 1px solid #f2d4e0;
+  border-radius: 999px;
+  background: #ffffffc9;
+  color: var(--rose);
+  font-size: .76rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-weight: 750;
+}
+
+h1 {
+  margin: 15px 0 9px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -.04em;
+}
+
+h1 span {
+  color: var(--rose);
+  font-style: italic;
+}
+
+.subtitle {
+  max-width: 510px;
+  margin: 0 auto;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.flower-row {
+  display: flex;
+  justify-content: center;
+  gap: 13px;
+  margin: 18px 0 6px;
+  font-size: 1.65rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid #fff;
+  border-radius: 24px;
+  padding: clamp(19px, 5vw, 31px);
+  box-shadow: var(--shadow);
+  margin: 17px 0;
+}
+
+.section-label {
+  color: var(--rose);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-weight: 800;
+  font-size: .72rem;
+  margin: 0 0 8px;
+}
+
+h2 {
+  margin: 0 0 12px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+p { line-height: 1.7; }
+
+.intro-copy {
+  color: var(--muted);
+  margin: 0;
+}
+
+.riddle {
+  background: linear-gradient(135deg, #fff2f7, #f5f0ff);
+  border-radius: 18px;
+  padding: 17px;
+  margin-top: 16px;
+}
+
+.riddle-question {
+  font-weight: 750;
+  margin: 0 0 12px;
+}
+
+.answer-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+}
+
+.choice, .primary, .secondary {
+  border: 0;
+  border-radius: 13px;
+  padding: 12px 13px;
+  transition: background .15s ease;
+}
+
+.choice {
+  background: white;
+  color: var(--ink);
+  border: 1px solid #f0dbe5;
+  font-weight: 650;
+}
+
+.choice:hover { background: #fff7fb; }
+
+.primary {
+  background: var(--rose);
+  color: white;
+  font-weight: 750;
+}
+
+.secondary {
+  background: #f2ecff;
+  color: #665184;
+  font-weight: 700;
+}
+
+button:focus-visible {
+  outline: 3px solid #b49be8;
+  outline-offset: 3px;
+}
+
+.feedback {
+  min-height: 25px;
+  margin: 10px 0 0;
+  color: var(--rose);
+  font-weight: 700;
+}
+
+.cat-area {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 17px;
+  padding: 16px;
+  border-radius: 18px;
+  background: #fffaf2;
+  border: 1px solid #f6e7d0;
+}
+
+.cat {
+  font-size: 2.8rem;
+  flex: 0 0 auto;
+}
+
+.cat-text { flex: 1; }
+
+.cat-text p {
+  margin: 4px 0 10px;
+  color: var(--muted);
+  font-size: .94rem;
+}
+
+.small-button {
+  padding: 9px 12px;
+  font-size: .9rem;
+}
+
+.feelings {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 17px;
+}
+
+.feeling {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  background: white;
+  color: var(--ink);
+  border: 1px solid #eee0ed;
+  border-radius: 14px;
+  padding: 13px;
+  min-height: 54px;
+  font-weight: 700;
+}
+
+.feeling:hover {
+  border-color: #e5a8c2;
+  background: #fff8fb;
+}
+
+.feeling .emoji { font-size: 1.25rem; }
+
+.message-panel {
+  display: none;
+  margin-top: 17px;
+  padding: 19px;
+  border-radius: 17px;
+  background: linear-gradient(135deg, #fff0f6, #f3efff);
+  border: 1px solid #f0dce9;
+}
+
+.message-panel.show { display: block; }
+
+.message-panel h3 {
+  margin: 0 0 8px;
+  font-family: Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.message-panel p { margin: 0; }
+
+.ending {
+  display: none;
+  text-align: center;
+  background: linear-gradient(145deg, #fff4f8, #fffaf1 55%, #f1edff);
+}
+
+.ending.show { display: block; }
+
+.ending .heart { font-size: 1.8rem; }
+
+.ending h2 { margin-top: 9px; }
+
+.ending-note {
+  max-width: 560px;
+  margin: 0 auto;
+  font-size: 1.04rem;
+  white-space: pre-line;
+}
+
+.signature {
+  margin-top: 18px;
+  color: var(--rose);
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+.ending-flowers {
+  font-size: 1.5rem;
+  letter-spacing: .18em;
+  margin-top: 15px;
+}
+
+.tools {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 16px 0;
+}
+
+footer {
+  text-align: center;
+  color: #8a7b8b;
+  font-size: .82rem;
+  padding: 7px 12px 0;
+}
+
+@media (max-width: 520px) {
+  .page {
+    width: calc(100% - 18px);
+    padding-top: 10px;
+  }
+
+  .card {
+    border-radius: 20px;
+    padding: 20px 16px;
+  }
+
+  .answer-list { grid-template-columns: 1fr; }
+
+  .cat-area {
+    align-items: flex-start;
+    gap: 12px;
+    padding: 13px;
+  }
+
+  .cat { font-size: 2.5rem; }
+
+  .feelings { grid-template-columns: 1fr; }
+
+  .feeling { min-height: 50px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+</style>
+</head>
+
+<body>
+<main class="page">
+
+<header>
+  <div class="eyebrow">Une petite parenthèse de douceur</div>
+  <h1>Bonjour, <span>Isabelle&nbsp;!</span></h1>
+  <p class="subtitle">
+    Un petit coin rien que pour vous, rempli de fleurs,
+    de sourires et de douceur.
+  </p>
+  <div class="flower-row" aria-hidden="true">
+    <span>🌷</span><span>🌼</span><span>🌸</span><span>🌻</span>
+  </div>
+</header>
+
+<section class="card">
+  <p class="section-label">Un petit jeu pour sourire</p>
+  <h2>Une devinette gourmande</h2>
+  <p class="intro-copy">
+    Je suis rouge, je porte de petites graines à l’extérieur
+    et je suis délicieuse avec de la crème. Qui suis-je ?
   </p>
 
-  <p class="signature">Pas besoin d’occasion pour vous apprécier ! 😂💕</p>
+  <div class="riddle">
+    <p class="riddle-question">Choisissez votre réponse :</p>
+    <div class="answer-list">
+      <button class="choice" data-answer="wrong">🍑 Une pêche</button>
+      <button class="choice" data-answer="right">🍓 Une fraise</button>
+      <button class="choice" data-answer="wrong">🍐 Une poire</button>
+    </div>
+    <p class="feedback" id="riddleFeedback" role="status" aria-live="polite"></p>
+  </div>
+
+  <div class="cat-area">
+    <div class="cat" id="cat" aria-hidden="true">🐱</div>
+    <div class="cat-text">
+      <strong>Minou a faim !</strong>
+      <p id="catText">
+        Appuyez sur le bouton pour lui donner une petite friandise.
+        Il vous attend avec son plus beau regard.
+      </p>
+      <button class="primary small-button" id="feedCat">
+        Miaou ! Donner à manger
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="card" id="feelingsCard">
+  <p class="section-label">Comment vous sentez-vous ?</p>
+  <h2>Choisissez ce qui vous ressemble aujourd’hui</h2>
+  <p class="intro-copy">
+    Il n’y a pas de bonne ou de mauvaise réponse.
+    Choisissez simplement ce dont vous avez besoin en ce moment.
+  </p>
+
+  <div class="feelings">
+    <button class="feeling" data-feeling="sad">
+      <span class="emoji">🌧️</span><span>Triste</span>
+    </button>
+    <button class="feeling" data-feeling="happy">
+      <span class="emoji">☀️</span><span>Heureuse</span>
+    </button>
+    <button class="feeling" data-feeling="confused">
+      <span class="emoji">🌀</span><span>Confuse</span>
+    </button>
+    <button class="feeling" data-feeling="lost">
+      <span class="emoji">🧭</span><span>Perdue / désorientée</span>
+    </button>
+    <button class="feeling" data-feeling="tired">
+      <span class="emoji">🌙</span><span>Fatiguée</span>
+    </button>
+    <button class="feeling" data-feeling="tease">
+      <span class="emoji">😏</span><span>Envie de taquiner Olivier</span>
+    </button>
+  </div>
+
+  <div class="message-panel" id="feelingMessage" aria-live="polite" aria-atomic="true">
+    <h3 id="messageTitle"></h3>
+    <p id="messageText"></p>
+  </div>
+</section>
+
+<section class="card ending" id="ending" aria-live="polite">
+  <div class="heart" aria-hidden="true">💗</div>
+  <p class="section-label">Juste parce que…</p>
+  <h2>Il n’y a pas d’occasion spéciale !</h2>
+
+  <p class="ending-note">Aujourd’hui, ce n’est ni votre anniversaire, ni une fête, ni une occasion particulière… ahaha !
+
+Mais alors, pourquoi attendre une occasion spéciale pour vous dire que vous êtes une personne formidable ?
+
+Vous méritez d’être appréciée, aimée et entourée de douceur tous les jours, pas seulement les jours de fête.
+
+Alors voilà, Isabelle : ce petit message est juste là pour vous rappeler que vous êtes précieuse et que vous méritez qu’on vous le dise chaque jour.
+
+Parce que vous êtes vous, tout simplement.</p>
+
+  <p class="signature">Pas besoin d’occasion pour vous apprécier !</p>
   <div class="ending-flowers" aria-hidden="true">🌷 🌼 🌸 🌻</div>
 </section>
+
+<div class="tools">
+  <button class="secondary" id="calmButton">
+    ♫ Petite mélodie douce : désactivée
+  </button>
+  <button class="secondary" id="againButton">
+    Recommencer le petit moment ↻
+  </button>
+</div>
+
+<footer>Un peu de douceur, juste parce que vous êtes vous.</footer>
+
+</main>
+
+<script>
+(function () {
+  // Devinette
+  document.querySelectorAll('.choice').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var feedback = document.getElementById('riddleFeedback');
+
+      if (button.dataset.answer === 'right') {
+        feedback.textContent =
+          'Bravo ! C’est bien la fraise. Minou approuve cette réponse ! 🍓';
+      } else {
+        feedback.textContent =
+          'Pas tout à fait ! Essayez encore… Un petit indice : elle est rouge et pleine de petites graines. 🍓';
+      }
+    });
+  });
+
+  // Le chat
+  var fed = false;
+
+  document.getElementById('feedCat').addEventListener('click', function () {
+    var cat = document.getElementById('cat');
+    var text = document.getElementById('catText');
+
+    if (!fed) {
+      cat.textContent = '😻';
+      text.textContent =
+        'Miaou, merci ! Minou se régale et vous envoie un ronronnement tout doux.';
+      this.textContent = 'Encore un miaou !';
+      fed = true;
+    } else {
+      cat.textContent = '🐱';
+      text.textContent =
+        'Ronron, ronron… Minou est heureux et vous remercie avec un petit coup de tête affectueux.';
+    }
+  });
+
+  // Messages personnalisés selon l’humeur
+  var messages = {
+    sad: {
+      title: 'Pour les jours un peu gris',
+      text: 'Vous n’avez pas besoin de faire semblant d’aller bien. Prenez votre temps, respirez doucement et soyez tendre avec vous-même. Même les journées grises laissent passer un peu de lumière. Vous méritez de la douceur, vous aussi.'
+    },
+    happy: {
+      title: 'Gardons cette lumière',
+      text: 'Votre joie mérite d’être savourée ! Profitez de ce petit bonheur, même s’il semble tout simple. Si vous le pouvez, partagez votre sourire avec quelqu’un : la bonne humeur a une jolie façon de se multiplier.'
+    },
+    confused: {
+      title: 'Un pas après l’autre',
+      text: 'Vous n’avez pas besoin de tout comprendre immédiatement. Faites une pause, prenez une grande inspiration et choisissez seulement la prochaine petite étape. Une chose à la fois, c’est déjà très bien.'
+    },
+    lost: {
+      title: 'Vous pouvez prendre votre temps',
+      text: 'Il arrive à tout le monde de ne plus trop savoir dans quelle direction aller. Vous n’avez pas à trouver toutes les réponses aujourd’hui. Reposez-vous sur les personnes qui vous veulent du bien et avancez doucement, à votre rythme.'
+    },
+    tired: {
+      title: 'Le repos est aussi une réussite',
+      text: 'Vous avez le droit de ralentir. Posez ce qui peut attendre, installez-vous confortablement et accordez-vous un vrai moment de repos. Vous n’avez pas besoin de tout accomplir pour mériter une pause.'
+    },
+    tease: {
+      title: 'Opération : taquiner Olivier',
+      text: 'Mission du jour : un petit sourire innocent, une remarque bien placée… puis faites comme si vous n’aviez rien fait ! Mais attention : gardez toujours une bonne dose de tendresse avec la malice.'
+    }
+  };
+
+  document.querySelectorAll('.feeling').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var message = messages[button.dataset.feeling];
+
+      document.getElementById('messageTitle').textContent = message.title;
+      document.getElementById('messageText').textContent = message.text;
+      document.getElementById('feelingMessage').classList.add('show');
+      document.getElementById('ending').classList.add('show');
+
+      document.getElementById('ending').scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+    });
+  });
+
+  // Petite mélodie facultative, créée par le navigateur
+  var audioContext = null;
+  var melodyTimer = null;
+  var melodyOn = false;
+  var calmButton = document.getElementById('calmButton');
+
+  function playNote(frequency, start, duration) {
+    if (!audioContext) return;
+
+    var oscillator = audioContext.createOscillator();
+    var gain = audioContext.createGain();
+
+    oscillator.type = 'sine';
+    oscillator.frequency.value = frequency;
+
+    gain.gain.setValueAtTime(0.0001, start);
+    gain.gain.exponentialRampToValueAtTime(0.035, start + 0.04);
+    gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
+
+    oscillator.connect(gain);
+    gain.connect(audioContext.destination);
+
+    oscillator.start(start);
+    oscillator.stop(start + duration + 0.02);
+  }
+
+  function playPhrase() {
+    if (!audioContext || !melodyOn) return;
+
+    var now = audioContext.currentTime;
+    [523.25, 659.25, 783.99, 659.25, 587.33, 698.46].forEach(
+      function (frequency, index) {
+        playNote(frequency, now + index * 0.42, 0.34);
+      }
+    );
+  }
+
+  calmButton.addEventListener('click', async function () {
+    if (!melodyOn) {
+      try {
+        var AudioContextClass = window.AudioContext || window.webkitAudioContext;
+
+        if (!AudioContextClass) {
+          calmButton.textContent = 'Mélodie non disponible sur cet appareil';
+          return;
+        }
+
+        audioContext = audioContext || new AudioContextClass();
+
+        if (audioContext.state === 'suspended') {
+          await audioContext.resume();
+        }
+
+        melodyOn = true;
+        calmButton.textContent = '♫ Petite mélodie douce : activée';
+
+        playPhrase();
+        melodyTimer = window.setInterval(playPhrase, 3200);
+      } catch (error) {
+        calmButton.textContent = 'La mélodie n’est pas disponible';
+      }
+    } else {
+      melodyOn = false;
+      window.clearInterval(melodyTimer);
+      calmButton.textContent = '♫ Petite mélodie douce : désactivée';
+    }
+  });
+
+  // Recommencer
+  document.getElementById('againButton').addEventListener('click', function () {
+    document.getElementById('riddleFeedback').textContent = '';
+
+    document.getElementById('cat').textContent = '🐱';
+    document.getElementById('catText').textContent =
+      'Appuyez sur le bouton pour lui donner une petite friandise. Il vous attend avec son plus beau regard.';
+    document.getElementById('feedCat').textContent = 'Miaou ! Donner à manger';
+
+    fed = false;
+
+    document.getElementById('feelingMessage').classList.remove('show');
+    document.getElementById('ending').classList.remove('show');
+
+    document.getElementById('feelingsCard').scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  });
+})();
+</script>
+</body>
+</html>
