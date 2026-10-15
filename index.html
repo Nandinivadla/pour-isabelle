@@ -1,227 +1,25 @@
+<section class="card ending" id="ending" aria-live="polite">
+  <div class="big-heart" aria-hidden="true">💗</div>
+  <p class="section-label">Juste parce que… 🌷</p>
+  <h2>Il n’y a pas d’occasion spéciale ! 😂</h2>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#fff7f0">
-<title>Bonjour Isabelle ! 🌷</title>
-<style>
-:root{--ink:#51434a;--rose:#c65f86;--cream:#fffaf3}
-*{box-sizing:border-box}
-body{margin:0;color:var(--ink);font-family:"Avenir Next",Avenir,system-ui,sans-serif;background:radial-gradient(circle at 8% 5%,#ffe7ef,transparent 26rem),radial-gradient(circle at 92% 20%,#e8f4e7,transparent 25rem),var(--cream);line-height:1.65;overflow-x:hidden}
-button{font:inherit;cursor:pointer;border:0;transition:transform .2s}
-button:hover{transform:translateY(-2px)}
-.wrap{width:min(900px,92%);margin:auto}
-header{padding:18px 0;display:flex;justify-content:space-between;align-items:center;gap:12px}
-.brand{font-weight:850;color:var(--rose)}
-.sound{background:#fff;border:1px solid #efd9e2;border-radius:999px;padding:9px 13px;color:var(--rose)}
-.hero{text-align:center;position:relative;padding:48px 0 28px;min-height:330px}
-h1{font-size:clamp(2.8rem,9vw,5.5rem);letter-spacing:-.06em;line-height:1.02;margin:25px 0;color:#a74d72}
-h1 span{font-family:Georgia,serif;font-style:italic;font-weight:500}
-.hero p{max-width:620px;margin:0 auto 20px;font-size:1.1rem;color:#79636d}
-.pill{display:inline-block;padding:6px 13px;border-radius:999px;background:#fff;border:1px solid #f1d5e0;color:#9d4a6b;font-size:.9rem}
-.flowers{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:-1}
-.float{position:absolute;font-size:2.4rem;animation:bob 5s ease-in-out infinite}
-.float:nth-child(1){top:5%;left:8%}.float:nth-child(2){top:14%;right:7%;animation-delay:-2s}.float:nth-child(3){bottom:5%;left:13%;animation-delay:-1s}.float:nth-child(4){bottom:8%;right:12%;animation-delay:-3s}.float:nth-child(5){top:0;right:28%;animation-delay:-1.5s}
-@keyframes bob{50%{transform:translateY(-13px) rotate(8deg)}}
-main{padding-bottom:40px}
-.panel{background:#ffffffd9;border:1px solid #f0dce3;border-radius:28px;padding:clamp(20px,5vw,34px);margin:20px 0;box-shadow:0 16px 45px #75485c0b}
-.panel h2{font-size:clamp(1.5rem,5vw,2.15rem);line-height:1.2;margin:0 0 8px}
-.sub{color:#806b75;margin-top:0}
-.center{text-align:center}
-.btn{border-radius:999px;padding:12px 18px;font-weight:800;margin:4px}
-.primary{background:var(--rose);color:white;box-shadow:0 8px 20px #c65f8625}
-.soft{background:#fff0f5;color:#9d4a6b;border:1px solid #f0d5e0}
-.foods,.feelings{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
-.choice{background:white;border:1px solid #f0dce3;border-radius:18px;padding:15px 8px;color:var(--ink);box-shadow:0 6px 18px #75485c08}
-.choice span{display:block;font-size:2.1rem}
-.choice strong{font-size:.95rem}
-.feedback{min-height:30px;font-weight:700;color:#a74d72;margin:12px 0}
-.hidden{display:none!important}
-.progress{display:flex;justify-content:center;gap:7px;margin:18px 0}
-.dot{height:8px;width:32px;border-radius:99px;background:#eadfe4}.dot.on{background:var(--rose)}
-.cat-area{font-size:5.2rem;margin:12px auto;display:block;animation:catBounce 2.2s ease-in-out infinite}
-@keyframes catBounce{50%{transform:translateY(-7px)}}
-.cat-sound{font-size:1.15rem;background:#fff;border:1px dashed #d9a2b6;color:#a74d72;border-radius:18px;padding:14px 18px}
-.food-bowl{font-size:2.8rem;margin:12px}
-.message{font-family:Georgia,serif;font-size:1.12rem;white-space:pre-line;background:linear-gradient(135deg,#fff7fa,#f8f5ff);border-radius:20px;padding:20px;margin:18px 0;text-align:left}
-footer{text-align:center;color:#8b7780;padding:18px 0 42px}
-.petals{position:fixed;top:-30px;pointer-events:none;z-index:9;animation:fall 3.5s linear forwards}
-@keyframes fall{to{transform:translateY(110vh) rotate(500deg);opacity:.15}}
-@media(max-width:600px){header{align-items:flex-start}.brand{max-width:55%}.hero{padding-top:36px;min-height:300px}.foods,.feelings{grid-template-columns:repeat(2,1fr)}.float{font-size:1.8rem}.panel{border-radius:23px}.message{font-size:1.05rem;padding:16px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}}
-</style>
-</head>
-<body>
-<div class="wrap">
-<header>
-<div class="brand">🌷 Un petit jardin pour Isabelle</div>
-<button class="sound" id="soundBtn">♫ Musique douce : arrêtée</button>
-</header>
+  <p class="ending-note">
+    Aujourd’hui, ce n’est ni votre anniversaire, ni une fête,
+    ni une occasion particulière… ahaha ! 😂💐
 
-<section class="hero">
-<div class="flowers" aria-hidden="true"><span class="float">🌸</span><span class="float">🌼</span><span class="float">🌷</span><span class="float">🍃</span><span class="float">🦋</span></div>
-<span class="pill">Une petite surprise, faite avec amour</span>
-<h1>Bonjour, <span>Isabelle !</span> 💗</h1>
-<p>Prête pour un petit jeu ? Des fleurs, un chat affamé, quelques défis amusants et un joli message vous attendent à la fin.</p>
-<button class="btn primary" id="startBtn">Jouons ensemble ✨</button>
+    Mais alors, pourquoi attendre une occasion spéciale pour
+    vous dire que vous êtes une personne formidable ?
+
+    Vous méritez d’être appréciée, aimée et entourée de douceur
+    tous les jours, pas seulement les jours de fête. 💗
+
+    Alors voilà, Isabelle : ce petit message est juste là pour
+    vous rappeler que vous êtes précieuse et que vous méritez
+    qu’on vous le dise chaque jour.
+
+    Parce que vous êtes vous, tout simplement. 🥰
+  </p>
+
+  <p class="signature">Pas besoin d’occasion pour vous apprécier ! 😂💕</p>
+  <div class="ending-flowers" aria-hidden="true">🌷 🌼 🌸 🌻</div>
 </section>
-
-<main>
-<div class="progress"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></div>
-
-<section class="panel center" id="level1">
-<span class="pill">NIVEAU 1 · Une devinette gourmande</span>
-<h2>Quel aliment est toujours de bonne humeur ? 🍽️</h2>
-<p class="sub">Choisissez la bonne réponse pour débloquer le niveau suivant.</p>
-<div class="foods">
-<button class="choice foodChoice" data-answer="wrong"><span>🥦</span><strong>Brocoli</strong></button>
-<button class="choice foodChoice" data-answer="right"><span>🍌</span><strong>La banane</strong></button>
-<button class="choice foodChoice" data-answer="wrong"><span>🥔</span><strong>Pomme de terre</strong></button>
-<button class="choice foodChoice" data-answer="wrong"><span>🍞</span><strong>Pain</strong></button>
-</div>
-<p class="feedback" id="foodFeedback">Indice : elle a la banane ! 😉</p>
-</section>
-
-<section class="panel center hidden" id="level2">
-<span class="pill">NIVEAU 2 · Le chat affamé</span>
-<h2>Oh non… ce petit chat a faim ! 🐱</h2>
-<span class="cat-area" id="cat">🐈</span>
-<p class="sub">Imitez le chat pour attirer son attention. Appuyez sur le bouton et dites « miaou » à voix haute !</p>
-<button class="cat-sound" id="meowBtn">🔊 Miaou !</button>
-<div class="food-bowl" id="bowl">🥣</div>
-<p class="feedback" id="catFeedback">Le chat attend votre plus beau miaou…</p>
-<button class="btn primary hidden" id="enterBtn">Le chat a mangé ! Entrer dans le jardin ➜</button>
-</section>
-
-<section class="panel hidden" id="level3">
-<div class="center">
-<span class="pill">NIVEAU 3 · Un petit moment pour vous</span>
-<h2>Comment vous sentez-vous, Isabelle ? 💗</h2>
-<p class="sub">Choisissez ce qui vous correspond. Il n’y a pas de mauvaise réponse.</p>
-</div>
-<div class="feelings">
-<button class="choice feelingChoice" data-feeling="sad"><span>🥺</span><strong>Triste</strong></button>
-<button class="choice feelingChoice" data-feeling="happy"><span>😊</span><strong>Heureuse</strong></button>
-<button class="choice feelingChoice" data-feeling="confused"><span>🤔</span><strong>Confuse</strong></button>
-<button class="choice feelingChoice" data-feeling="lost"><span>🧭</span><strong>Perdue</strong></button>
-<button class="choice feelingChoice" data-feeling="tired"><span>😴</span><strong>Fatiguée</strong></button>
-<button class="choice feelingChoice" data-feeling="olivier"><span>😈</span><strong>Taquiner Olivier 😂</strong></button>
-</div>
-<article id="feelingResult" class="message hidden" aria-live="polite"></article>
-<div class="center"><button class="btn soft hidden" id="againBtn">Choisir une autre émotion</button></div>
-</section>
-
-<section class="panel center hidden" id="ending">
-<div style="font-size:3rem">🌷🍃🌸</div>
-<h2>Encore une petite chose, Isabelle…</h2>
-<p class="message">Nous ne savons pas toujours trouver les mots parfaits, et nous n’avons pas besoin d’être parfaits pour être ensemble. Nous devons simplement continuer à essayer de nous comprendre. Merci de nous montrer, par votre gentillesse et votre façon de célébrer même les plus petites choses, ce que l’humanité et la solidarité peuvent être.</p>
-<p style="font-family:Georgia,serif;font-size:1.25rem;color:#a74d72">Vous méritez énormément de bonheur. Nous sommes là — dans les jours difficiles, les jours joyeux et tous les jours ordinaires entre les deux. 💗</p>
-<p class="message">Aujourd’hui, il n’y a aucune occasion particulière — et c’est justement ce qui compte. Vous êtes une personne attachante, Isabelle, et nous n’avons pas besoin d’une occasion spéciale pour vous apprécier. Nous pouvons vous le rappeler chaque jour. 🌷💗</p>
-<button class="btn primary" id="petalsBtn">Envoyer des fleurs dans les airs 🌸</button>
-</section>
-</main>
-<footer>Fait avec amour, des fleurs, des feuilles et une petite touche de malice. ♥</footer>
-</div>
-
-<script>
-const $=id=>document.getElementById(id);
-
-function fleurs(n=18){
-if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-const icons=['🌸','🌷','🍃','💗','✨','🌼'];
-for(let i=0;i<n;i++){
-const p=document.createElement('span');
-p.className='petals';
-p.textContent=icons[Math.floor(Math.random()*icons.length)];
-p.style.left=Math.random()*100+'vw';
-p.style.animationDelay=Math.random()*.7+'s';
-p.style.fontSize=(16+Math.random()*18)+'px';
-document.body.append(p);
-setTimeout(()=>p.remove(),4200);
-}
-}
-
-function progression(n){
-document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i<n));
-}
-function afficher(id){
-$(id).classList.remove('hidden');
-$(id).scrollIntoView({behavior:'smooth',block:'center'});
-}
-$('startBtn').addEventListener('click',()=>{
-$('level1').scrollIntoView({behavior:'smooth',block:'center'});
-fleurs(12);
-});
-
-document.querySelectorAll('.foodChoice').forEach(b=>b.addEventListener('click',()=>{
-if(b.dataset.answer==='right'){
-$('foodFeedback').textContent='Bravo ! La banane a toujours la pêche ! 🍌😂 Vous avez gagné : le niveau 2 est débloqué !';
-$('foodFeedback').style.color='#47794f';
-afficher('level2');progression(2);fleurs(22);
-}else{
-$('foodFeedback').textContent='Pas tout à fait ! Réessayez, Isabelle. Indice : elle a la banane ! 😉';
-}
-}));
-
-$('meowBtn').addEventListener('click',()=>{
-$('cat').textContent='😺';$('bowl').textContent='🐟';
-$('catFeedback').textContent='MIAOU ! Le chat vous a entendue et a dévoré son repas ! Miam !';
-$('enterBtn').classList.remove('hidden');fleurs(15);
-});
-$('enterBtn').addEventListener('click',()=>{
-afficher('level3');progression(3);fleurs(12);
-});
-
-const messages={
-sad:`Isabelle, vous voir triste nous rend tristes aussi, parce que nous tenons énormément à vous. Vous voir sourire nous donne de l’énergie et réchauffe le cœur de chacun de nous. Comme vous nous le rappelez souvent, les jours passent — et nous les traverserons ensemble, plus forts lorsque nous restons les uns auprès des autres. Si quelque chose pèse sur votre cœur, vous pouvez nous en parler. Vous n’avez pas à tout porter toute seule. Nous sommes là pour vous. 💗`,
-happy:`Vous voir heureuse fait sourire tout le monde. J’ai l’impression que vous êtes l’un des liens précieux qui nous rassemblent — grâce à votre gentillesse, votre aide, votre joie et votre façon d’inclure les autres. Votre bonheur compte beaucoup pour nous et vous méritez d’être très, très heureuse. Continuez à partager cette belle lumière qui est la vôtre ! ☀️`,
-confused:`Nous vous admirons de bien des façons. Nous essayons parfois de vous imiter et nous échouons — ce qui montre probablement à quel point vous êtes unique ! 😄 Si vous vous sentez confuse, nous savons que beaucoup de choses vous passent peut-être par la tête. Nous croyons en vous et savons que vous trouverez votre chemin. Surtout, nous sommes juste là, à vos côtés. Quoi qu’il arrive, vous n’avez pas à tout comprendre toute seule. 🫶`,
-lost:`Si vous vous sentez perdue, vous n’avez pas besoin de connaître toutes les réponses aujourd’hui. Nous pouvons nous asseoir avec vous, vous écouter et avancer ensemble, un pas après l’autre. Vous avez aidé tant de personnes à se sentir écoutées et entourées ; laissez-nous faire la même chose pour vous. Vous n’êtes pas un poids et vous n’êtes pas seule. Nous sommes là, quel que soit le chemin. 🧭`,
-tired:`Si vous êtes fatiguée, c’est sûrement parce que vous faites déjà énormément de choses chaque jour. C’est tout à fait normal d’avoir besoin d’une pause. Et si vous êtes fatiguée mentalement ou émotionnellement, n’hésitez surtout pas à nous en parler. Je me souviens de la façon dont vous célébrez les petites choses des autres et de toute l’attention que vous leur portez. Nous n’avons peut-être pas encore votre niveau d’humanité, mais nous pouvons continuer à apprendre auprès de vous. Vous aussi, vous méritez du repos, de l’attention et du soutien. 🌷`,
-olivier:`😂 Isabelle a choisi : TAQUINER OLIVIER ! Olivier, ceci est un avertissement officiel : vous êtes condamné à faire rire Isabelle, à lui apporter des gourmandises et à accepter quelques taquineries inoffensives. Isabelle, vous êtes la cheffe de ce jeu ! Mais que cela reste bon enfant : quelques tâches supplémentaires, une danse ridicule ou la préparation d’un thé — aucune vraie souffrance autorisée ! 😹`
-};
-
-document.querySelectorAll('.feelingChoice').forEach(b=>b.addEventListener('click',()=>{
-$('feelingResult').textContent=messages[b.dataset.feeling];
-$('feelingResult').classList.remove('hidden');
-$('againBtn').classList.remove('hidden');
-afficher('feelingResult');
-fleurs(b.dataset.feeling==='happy'?24:8);
-$('ending').classList.remove('hidden');
-}));
-$('againBtn').addEventListener('click',()=>{
-$('feelingResult').classList.add('hidden');
-$('againBtn').classList.add('hidden');
-$('level3').scrollIntoView({behavior:'smooth',block:'center'});
-});
-$('petalsBtn').addEventListener('click',()=>fleurs(60));
-
-let ctx=null,gain=null,timer=null,on=false,idx=0;
-const tones=[261.63,329.63,392,329.63,293.66,349.23,440,349.23];
-function tone(){
-if(!on||!ctx)return;
-const o=ctx.createOscillator(),g=ctx.createGain();
-o.type='sine';o.frequency.value=tones[idx++%tones.length];
-g.gain.setValueAtTime(.0001,ctx.currentTime);
-g.gain.exponentialRampToValueAtTime(.025,ctx.currentTime+.12);
-g.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+1.25);
-o.connect(g);g.connect(gain);o.start();o.stop(ctx.currentTime+1.3);
-}
-$('soundBtn').addEventListener('click',async()=>{
-if(!on){
-const AC=window.AudioContext||window.webkitAudioContext;
-if(!AC)return;
-ctx=ctx||new AC();await ctx.resume();
-gain=ctx.createGain();gain.connect(ctx.destination);
-on=true;tone();timer=setInterval(tone,950);
-$('soundBtn').textContent='♫ Musique douce : activée';
-}else{
-on=false;clearInterval(timer);
-$('soundBtn').textContent='♫ Musique douce : arrêtée';
-}
-});
-</script>
-</body>
-</html>
