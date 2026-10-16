@@ -703,13 +703,27 @@ function resetGame() {
 }
 
 // NEW FUNCTION: FLOWERS RAIN 🌸
-function rainFlowers() {
-  const flowers = ["🌸", "🌷", "🌼", "🌺", "💮", "🌻"];
-  const reducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches;
 
-  document.getElementById("flowerMessage").classList.remove("hidden");
+function rainFlowers() {
+  const flowers = ["🌸", "🌷", "🌼", "🌺", "💮", "🌻", "💐", "🌹"];
+
+  document.getElementById("flowerMessage")?.classList.remove("hidden");
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  for (let i = 0; i < 60; i++) {
+    const flower = document.createElement("span");
+    flower.className = "flower-rain";
+    flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+    flower.style.left = Math.random() * 100 + "vw";
+    flower.style.fontSize = (20 + Math.random() * 24) + "px";
+    flower.style.animationDelay = Math.random() * 1.5 + "s";
+    flower.style.animationDuration = (2.5 + Math.random() * 2) + "s";
+
+    document.body.appendChild(flower);
+    flower.addEventListener("animationend", () => flower.remove());
+  }
+}
 
   if (reducedMotion) return;
 
