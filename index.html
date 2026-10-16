@@ -1,29 +1,733 @@
-<p class="section-label">UN PETIT RAPPEL,<br>JUSTE POUR VOUS 😂</p>
 
-<h2>Isabelle, vous méritez d’être appréciée tous les jours. Oui, TOUS les jours ! 😌</h2>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Un petit monde pour Isabelle 🌷</title>
 
-<p class="ending-note">
-Aujourd’hui, aucune occasion spéciale. Pas d’anniversaire, pas de fête, même pas une excuse valable. 😂
+<style>
+:root {
+  --pink: #f5c9d9;
+  --rose: #b84f78;
+  --cream: #fffaf4;
+  --green: #66846b;
+  --ink: #51434b;
+}
 
-Alors pourquoi ce message ?
+* { box-sizing: border-box; }
 
-Bah… parce que vous méritez qu’on vous apprécie tous les jours, pardi ! 💅
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at top left, #fce7ed 0, transparent 42%),
+    radial-gradient(ellipse at bottom right, #e8f0df 0, transparent 42%),
+    #fff9f3;
+}
 
-Il faut attendre un anniversaire pour être adorable ? Attendre Noël pour recevoir de l’affection ? Attendre une fête pour qu’on vous rappelle que vous êtes géniale ?
+button { font: inherit; }
 
-Mais quelle arnaque ! 😂
+.garden {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
 
-Isabelle, vous êtes une personne attachante, précieuse et unique. Alors oui, on pourrait attendre une occasion spéciale pour vous le dire…
+.falling {
+  position: absolute;
+  top: -50px;
+  left: var(--left);
+  font-size: var(--size);
+  opacity: .72;
+  animation: fall var(--duration) linear infinite;
+  animation-delay: var(--delay);
+}
 
-Mais franchement, pourquoi attendre ? On a mieux à faire ? Certainement pas. 😌💗
+@keyframes fall {
+  0% { transform: translateY(-50px) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(250deg); }
+}
 
-Donc voilà, petit rappel gratuit du jour : vous êtes appréciée, vous méritez plein de douceur, et vous n’avez absolument rien à prouver pour ça.
+.page {
+  position: relative;
+  z-index: 1;
+  width: min(760px, calc(100% - 28px));
+  margin: 28px auto;
+  padding-bottom: 35px;
+}
 
-Aucune occasion. Aucune raison. Juste vous.
+.top-flowers {
+  text-align: center;
+  font-size: 26px;
+  letter-spacing: 7px;
+  margin: 10px 0 16px;
+}
 
-Bon, maintenant, ne prenez pas trop la grosse tête non plus… 😂🌷
-</p>
+.card {
+  background: rgba(255, 255, 255, .89);
+  border: 1px solid rgba(206, 157, 176, .35);
+  border-radius: 28px;
+  padding: clamp(22px, 5vw, 42px);
+  text-align: center;
+  box-shadow: 0 12px 38px rgba(132, 83, 104, .10);
+}
 
-<p class="signature">
-Pas besoin d’occasion pour vous apprécier. Bon, profitez-en, hein ! 😂💕
-</p>
+.level-label {
+  color: var(--rose);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(32px, 7vw, 48px);
+  line-height: 1.13;
+  font-weight: normal;
+  margin: 8px 0 16px;
+}
+
+h2 {
+  font-family: Georgia, serif;
+  font-weight: normal;
+  font-size: clamp(25px, 5vw, 34px);
+  line-height: 1.25;
+  margin: 10px 0 16px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.intro { max-width: 540px; margin: 0 auto 20px; }
+
+.flower-line {
+  color: #b86d88;
+  font-size: 22px;
+  letter-spacing: 6px;
+  margin: 18px 0;
+}
+
+.game-icon {
+  font-size: 70px;
+  margin: 8px 0;
+}
+
+.question {
+  font-size: 19px;
+  font-weight: bold;
+  margin: 22px 0 12px;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 20px auto;
+  max-width: 510px;
+}
+
+.choice, .main-button, .soft-button {
+  border: 0;
+  border-radius: 16px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: background-color .15s ease, transform .15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.choice {
+  color: var(--ink);
+  background: #fff0f5;
+  border: 1px solid #f0d1dc;
+}
+
+.choice:hover, .choice:focus-visible {
+  background: #f9dce7;
+  transform: translateY(-2px);
+}
+
+.main-button {
+  color: white;
+  background: var(--rose);
+  font-weight: bold;
+  margin: 8px 4px;
+  box-shadow: 0 5px 12px rgba(184, 79, 120, .16);
+}
+
+.main-button:hover, .main-button:focus-visible {
+  background: #9f3e66;
+  transform: translateY(-1px);
+}
+
+.soft-button {
+  color: #765468;
+  background: #f7edf2;
+  border: 1px solid #ead7e0;
+  margin: 8px 4px;
+}
+
+button:focus-visible {
+  outline: 3px solid #c68aa3;
+  outline-offset: 3px;
+}
+
+.feedback {
+  min-height: 32px;
+  margin: 14px 0;
+  font-weight: bold;
+  color: var(--green);
+}
+
+.hidden { display: none !important; }
+
+.cat-area {
+  background: #fff6ee;
+  border-radius: 22px;
+  padding: 20px 14px;
+  margin: 20px 0;
+}
+
+.cat-face {
+  font-size: 92px;
+  line-height: 1.2;
+  margin: 8px 0;
+}
+
+.cat-caption {
+  font-family: Georgia, serif;
+  font-size: 21px;
+  color: #876174;
+}
+
+.progress {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 0 20px;
+}
+
+.progress span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #e9d5de;
+}
+
+.progress span.active { background: var(--rose); }
+
+.feelings {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+  margin: 24px 0;
+}
+
+.feeling {
+  text-align: left;
+  background: #fff8f5;
+  border: 1px solid #eedde1;
+  border-radius: 17px;
+  padding: 15px 13px;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color .15s ease, transform .15s ease;
+}
+
+.feeling:hover, .feeling:focus-visible {
+  background: #fce9ef;
+  transform: translateY(-2px);
+}
+
+.feeling strong {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.feeling small {
+  color: #8a737e;
+  line-height: 1.5;
+}
+
+.message-box {
+  text-align: left;
+  background: #fff8f5;
+  border-left: 4px solid #cf8da7;
+  border-radius: 5px 18px 18px 5px;
+  padding: 22px;
+  margin: 24px 0;
+}
+
+.message-box p { white-space: pre-line; }
+
+.final-note {
+  background: #f8edf2;
+  border-radius: 22px;
+  padding: 23px;
+  margin-top: 24px;
+}
+
+.signature {
+  font-family: Georgia, serif;
+  font-size: 21px;
+  color: #a34c71;
+  margin-top: 24px;
+}
+
+.tiny-note {
+  font-size: 13px;
+  color: #917d87;
+}
+
+footer {
+  text-align: center;
+  color: #917d87;
+  font-size: 13px;
+  padding: 20px 8px;
+}
+
+@media (max-width: 480px) {
+  .page { margin: 12px auto; }
+  .card { border-radius: 23px; }
+  .options, .feelings { grid-template-columns: 1fr; }
+  .choice, .feeling { min-height: 54px; }
+  p { font-size: 15px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="garden" aria-hidden="true">
+  <span class="falling" style="--left:5%;--size:22px;--duration:13s;--delay:-2s">🌸</span>
+  <span class="falling" style="--left:18%;--size:18px;--duration:17s;--delay:-9s">🍃</span>
+  <span class="falling" style="--left:32%;--size:20px;--duration:15s;--delay:-5s">🌷</span>
+  <span class="falling" style="--left:49%;--size:17px;--duration:19s;--delay:-12s">🍂</span>
+  <span class="falling" style="--left:65%;--size:22px;--duration:14s;--delay:-7s">🌼</span>
+  <span class="falling" style="--left:81%;--size:18px;--duration:16s;--delay:-3s">🍃</span>
+  <span class="falling" style="--left:93%;--size:21px;--duration:18s;--delay:-11s">🌸</span>
+</div>
+
+<main class="page">
+  <div class="top-flowers" aria-hidden="true">🌷 🌿 🌸 🌿 🌷</div>
+
+  <div class="progress" aria-label="Progression du jeu">
+    <span id="dot1" class="active"></span>
+    <span id="dot2"></span>
+    <span id="dot3"></span>
+  </div>
+
+  <!-- LEVEL 1: THE FOOD RIDDLE -->
+  <section class="card" id="level1">
+    <div class="level-label">Niveau 1 · Le défi gourmand 🍓</div>
+    <h1>Bonjour Isabelle ! 🌷</h1>
+
+    <p class="intro">
+      Bienvenue dans votre petit monde secret !
+      Aujourd'hui, pas de réunion, pas de tâches, pas de responsabilités…
+      juste vous, quelques fleurs et un petit jeu. 😌
+    </p>
+
+    <div class="flower-line">✿ ❀ ✿</div>
+    <div class="game-icon" aria-hidden="true">🥕 🍓 🥐</div>
+
+    <p class="question">Petite devinette : qui suis-je ?</p>
+    <p>
+      Je suis orange, je pousse dans la terre, les lapins m'adorent…
+      et Olivier pourrait peut-être m'en piquer une bouchée. 😂
+      Qui suis-je ?
+    </p>
+
+    <div class="options">
+      <button class="choice" onclick="checkRiddle('pizza')">🍕 Une pizza</button>
+      <button class="choice" onclick="checkRiddle('carotte')">🥕 Une carotte</button>
+      <button class="choice" onclick="checkRiddle('fromage')">🧀 Du fromage</button>
+      <button class="choice" onclick="checkRiddle('gateau')">🎂 Un gâteau</button>
+    </div>
+
+    <div class="feedback" id="riddleFeedback" aria-live="polite"></div>
+
+    <div id="riddleSuccess" class="hidden">
+      <h2>BRAVO, Isabelle ! 🎉</h2>
+      <p>
+        Bonne réponse ! Vous avez gagné le droit de passer au niveau suivant.
+        Ne vous habituez pas trop aux victoires faciles… enfin, si, un peu. 😂
+      </p>
+      <button class="main-button" onclick="goToLevel(2)">
+        Débloquer le niveau 2 ➜
+      </button>
+    </div>
+
+    <p class="tiny-note">Indice : Bugs Bunny connaît la réponse. 🐰</p>
+  </section>
+
+  <!-- LEVEL 2: THE HUNGRY CAT -->
+  <section class="card hidden" id="level2">
+    <div class="level-label">Niveau 2 · Le chat affamé 🐾</div>
+    <h2>Une mission très importante, Isabelle.</h2>
+
+    <p>
+      Ce petit chat a une faim de loup.
+      Il refuse de manger tant qu'il n'a pas entendu son bruit préféré…
+      Oui, vous avez bien compris : il attend votre talent de chanteuse. 😂
+    </p>
+
+    <div class="cat-area">
+      <div class="cat-face" id="catFace" aria-label="Un chat">🐱</div>
+      <div class="cat-caption" id="catCaption">Miaou… j'ai faim !</div>
+      <p id="catSpeech">Madame Isabelle, un petit MEOW, s'il vous plaît ? 🥺</p>
+      <div style="font-size:35px" id="catFood">🍽️</div>
+    </div>
+
+    <p class="question">Comment nourrir le petit chef ?</p>
+    <p>
+      Faites votre meilleur « Miaouuuuu ! » à voix haute,
+      puis appuyez sur le bouton. Le chat compte sur vous. 😂
+    </p>
+
+    <button class="main-button" id="feedButton" onclick="feedCat()">
+      🐾 J'ai fait MIAOU !
+    </button>
+
+    <div class="feedback" id="catFeedback" aria-live="polite"></div>
+
+    <div id="catSuccess" class="hidden">
+      <h2>Mission accomplie ! 🐈</h2>
+      <p>
+        Le chat a mangé ! Vous avez officiellement obtenu le diplôme
+        de nourrisseuse de chats. Spécialité : miaou professionnel. 😂
+      </p>
+      <button class="main-button" onclick="goToLevel(3)">
+        Entrer dans le petit jardin 🌷
+      </button>
+    </div>
+
+    <p class="tiny-note">
+      Promis, aucun micro ne vous écoute : il suffit de faire le bruit et de cliquer. 💗
+    </p>
+  </section>
+
+  <!-- LEVEL 3: FEELINGS -->
+  <section class="card hidden" id="level3">
+    <div class="level-label">Niveau 3 · Un petit moment pour vous 💗</div>
+    <h2>Comment vous sentez-vous, Isabelle ?</h2>
+
+    <p class="intro">
+      Choisissez ce qui vous ressemble aujourd'hui.
+      Pas besoin de faire semblant d'aller bien, ni de trouver les mots parfaits.
+      Ici, vous avez le droit d'être simplement vous-même.
+    </p>
+
+    <div class="feelings">
+      <button class="feeling" onclick="showMessage('sad')">
+        <strong>🌧️ Triste</strong>
+        <small>Pour les jours où le cœur est un peu lourd.</small>
+      </button>
+
+      <button class="feeling" onclick="showMessage('happy')">
+        <strong>☀️ Heureuse</strong>
+        <small>Pour partager votre belle énergie !</small>
+      </button>
+
+      <button class="feeling" onclick="showMessage('confused')">
+        <strong>🌷 Confuse</strong>
+        <small>Quand mille choses se mélangent dans la tête.</small>
+      </button>
+
+      <button class="feeling" onclick="showMessage('lost')">
+        <strong>🍃 Perdue</strong>
+        <small>Quand le chemin semble un peu flou.</small>
+      </button>
+
+      <button class="feeling" onclick="showMessage('tired')">
+        <strong>🌙 Fatiguée</strong>
+        <small>Quand vous avez besoin de souffler.</small>
+      </button>
+
+      <button class="feeling" onclick="showMessage('olivier')">
+        <strong>😈 Torturer Olivier</strong>
+        <small>Option de test. Olivier, ceci est un avertissement. 😂</small>
+      </button>
+    </div>
+
+    <div id="personalMessage" class="hidden" aria-live="polite">
+      <div class="flower-line">🌸 🍃 🌷 🍃 🌸</div>
+      <h2 id="messageTitle"></h2>
+      <div class="message-box">
+        <p id="messageText"></p>
+      </div>
+
+      <div class="final-note">
+        <p class="level-label">UN PETIT RAPPEL,</p>
+        <h2>JUSTE POUR VOUS 💗</h2>
+
+        <p>
+          Isabelle, voir les personnes qu'on aime heureuses donne une énergie
+          particulière à la vie. Et votre présence, votre gentillesse,
+          votre aide et votre joie comptent beaucoup plus que vous ne l'imaginez.
+        </p>
+
+        <p>
+          Il n'y a pas besoin d'un anniversaire, d'une fête ou d'une occasion
+          spéciale pour vous dire que vous êtes appréciée. On peut le faire
+          un lundi ordinaire, un mercredi tranquille ou même un jour où
+          Olivier vous agace particulièrement. 😂
+        </p>
+
+        <p>
+          Vous n'avez pas besoin d'être parfaite, d'être forte tout le temps
+          ou de prendre soin de tout le monde pour mériter de l'affection.
+          Vous la méritez simplement parce que vous êtes vous.
+        </p>
+
+        <p>
+          Alors gardez ce petit coin comme un rappel :
+          si un jour les choses vous semblent lourdes, vous n'avez pas
+          à tout porter toute seule. Nous sommes là, et vous pouvez partager
+          avec nous ce que vous avez sur le cœur.
+        </p>
+
+        <p>
+          Merci pour votre façon de faire attention aux petites choses,
+          de célébrer les petites joies des autres et de rendre les gens
+          autour de vous importants. Nous apprenons beaucoup en vous regardant,
+          même si nous n'arriverons peut-être jamais à atteindre votre niveau
+          de gentillesse. On va continuer à essayer ! 😂🌷
+        </p>
+
+        <p class="signature">
+          Pas besoin d'occasion pour vous apprécier, Isabelle. 💕
+        </p>
+      </div>
+
+      <button class="main-button" onclick="showMessage('random')">
+        Encore un petit message 💌
+      </button>
+      <button class="soft-button" onclick="resetGame()">
+        Rejouer depuis le début ↻
+      </button>
+    </div>
+  </section>
+
+  <footer>
+    Fait avec des fleurs, un chat affamé et beaucoup d'affection. 🌸🐈
+    <br>Et peut-être un tout petit peu de folie. 😂
+  </footer>
+</main>
+
+<script>
+const messages = {
+  sad: {
+    title: "Si vous êtes triste aujourd'hui… 🌧️",
+    text: `Isabelle, vous voir triste nous rend tristes aussi.
+Quand on vous voit sourire, cela nous donne de l'énergie et rend les choses un peu plus légères. Votre sourire a cette façon de rapprocher les gens.
+
+Mais vous n'avez pas à sourire uniquement pour nous rassurer. Vous avez aussi le droit d'avoir des journées difficiles, de ne pas avoir envie de parler ou de ne pas savoir exactement ce que vous ressentez.
+
+Comme vous nous l'avez dit, les jours passent. Les bons jours comme les jours compliqués finissent par passer, et nous sommes ensemble pour avancer, grandir et retrouver des raisons d'être heureux.
+
+Nous pouvons partager ce qui nous pèse. Vous n'avez pas besoin de tout garder pour vous ni de trouver seule une solution à chaque problème.
+
+Et si aujourd'hui vous n'avez pas la force de faire grand-chose, ce n'est pas grave. Prenez votre temps, respirez un peu et soyez aussi gentille avec vous-même que vous l'êtes avec les autres.
+
+Nous sommes là, Isabelle. Pour les grandes choses, les petites choses et même les choses que vous ne savez pas encore comment expliquer. 💗`
+  },
+
+  happy: {
+    title: "Ahhh, notre Isabelle heureuse ! ☀️",
+    text: `Vous voir heureuse donne envie de sourire à tout le monde !
+Il y a quelque chose de contagieux dans votre joie : elle rassemble les gens et rend les moments ordinaires beaucoup plus agréables.
+
+Parfois, j'ai l'impression que vous êtes le point central qui nous relie tous. Votre gentillesse, votre aide, votre attention et votre joie créent un lien entre les personnes, même quand chacune est occupée par ses propres problèmes.
+
+C'est comme si vous aviez créé un petit réseau humain sans même vous en rendre compte. Pas besoin de Wi-Fi, pas besoin de mot de passe : juste Isabelle. 😂
+
+Vous méritez d'être très, très heureuse. Pas seulement parce que vous rendez les autres heureux, mais aussi parce que votre propre bonheur compte énormément.
+
+Alors profitez de vos bons moments, riez fort, célébrez les petites victoires et continuez à être cette personne qui fait du bien autour d'elle.
+
+Et si vous êtes heureuse aujourd'hui, mission accomplie pour ce petit site : au moins, nous aurons contribué à un sourire ! 🌷💕`
+  },
+
+  confused: {
+    title: "Si tout semble un peu confus… 🌷",
+    text: `Isabelle, nous vous admirons de tellement de façons.
+Nous essayons parfois de vous imiter, de faire les choses comme vous, de comprendre comment vous arrivez à penser à tant de détails… et nous échouons souvent lamentablement. 😂
+
+Mais nous savons aussi qu'une personne qui réfléchit beaucoup peut avoir beaucoup de choses en tête. Si vous vous sentez confuse aujourd'hui, il y a peut-être mille décisions, pensées ou responsabilités qui se mélangent.
+
+Nous ne connaissons pas toujours tout ce que vous portez en vous, et nous ne prétendons pas avoir la réponse à tout.
+
+Mais nous avons confiance en vous. Nous croyons que vous trouverez votre chemin, même si tout n'est pas clair maintenant. Vous n'avez pas besoin de résoudre toutes les questions aujourd'hui.
+
+Et surtout, nous sommes juste là. Pas uniquement pour applaudir quand tout va bien, mais aussi pour rester à vos côtés quand vous hésitez, quand vous avez des doutes ou quand vous avez simplement besoin de parler.
+
+Vous pouvez partager vos pensées avec nous, même si elles sont désordonnées. Nous n'avons pas besoin que tout soit parfaitement expliqué pour vous écouter.
+
+Prenez les choses une par une. Même les personnes que nous admirons ont parfois besoin de faire une pause et de remettre un peu d'ordre dans leurs pensées. 💗`
+  },
+
+  lost: {
+    title: "Si vous vous sentez un peu perdue… 🍃",
+    text: `Isabelle, même les personnes qui semblent toujours savoir où elles vont peuvent parfois se sentir perdues.
+
+Vous avez peut-être beaucoup de choses à penser, des décisions à prendre ou des chemins à choisir. Et parfois, même après avoir beaucoup réfléchi, on ne sait toujours pas quelle est la meilleure direction.
+
+Cela ne signifie pas que vous avez échoué. Cela signifie simplement que vous êtes humaine, comme nous tous.
+
+Vous n'avez pas besoin de connaître toutes les réponses tout de suite. Vous pouvez prendre votre temps, changer d'avis, demander de l'aide ou simplement faire une pause avant de continuer.
+
+Nous avons confiance en vous, mais nous ne voulons pas que vous pensiez devoir tout gérer seule parce que nous vous admirons.
+
+Nous sommes là, dans les moments où le chemin est clair comme dans ceux où il semble complètement brouillé.
+
+Et si vous ne savez pas encore où aller, ce n'est pas grave. Nous pouvons réfléchir ensemble, avancer petit à petit et nous rappeler que tout ne doit pas être réglé en une seule journée.
+
+Vous comptez pour nous, Isabelle. Pas seulement pour ce que vous faites, mais pour la personne que vous êtes. 🌷`
+  },
+
+  tired: {
+    title: "Si vous êtes fatiguée… 🌙",
+    text: `Isabelle, si vous êtes fatiguée, c'est peut-être parce que vous avez déjà fait énormément de choses aujourd'hui.
+
+On sait que les journées peuvent être longues et que vous avez souvent beaucoup à penser, beaucoup à organiser et beaucoup de personnes auxquelles faire attention.
+
+Alors, si vous êtes physiquement fatiguée, reposez-vous un peu. Vous n'avez pas besoin de gagner une médaille pour avoir accompli suffisamment de choses dans une journée. 😂
+
+Mais si vous êtes fatiguée mentalement, si vous avez l'impression que tout devient lourd ou que vous devez toujours penser à tout, s'il vous plaît, n'hésitez pas à en parler avec nous.
+
+Vous n'avez pas à attendre d'être complètement épuisée pour partager ce qui vous pèse.
+
+Je me souviens de la façon dont vous célébrez les petites choses des autres, de votre attention aux détails et de votre capacité à faire sentir aux gens qu'ils comptent.
+
+Nous n'atteindrons peut-être jamais votre niveau d'humanité et d'attention… mais nous apprenons avec vous, petit à petit. Et nous voulons aussi être là pour vous.
+
+Alors, aujourd'hui, autorisez-vous à ralentir. Le monde peut attendre un petit moment. Les fleurs ne vont pas s'enfuir, et Olivier peut probablement se débrouiller cinq minutes sans supervision. 😂
+
+Prenez soin de vous aussi, Isabelle. Vous le méritez autant que les personnes dont vous prenez soin. 💗`
+  },
+
+  olivier: {
+    title: "OPÉRATION : TORTURER OLIVIER 😂😈",
+    text: `ISABELLE, VOUS AVEZ CHOISI LE MODE CHAOS. 😂
+
+Olivier, si vous lisez ceci, sachez que cette option a été choisie volontairement. Nous ne sommes responsables d'aucune conséquence émotionnelle, d'aucun soupir dramatique et d'aucun regard mystérieux lancé pendant le dîner.
+
+Isabelle, vous avez officiellement tous les droits de le taquiner un peu. Un tout petit peu… ou juste assez pour qu'il se demande ce qu'il a encore fait. 😌
+
+Mais, blague à part, je vous admire tous les deux en tant que couple. Personnellement, j'apprends beaucoup en vous regardant rester ensemble.
+
+Vous me rappelez qu'une relation n'a pas besoin d'être parfaite pour être belle. Il ne s'agit pas de ne jamais être en désaccord, de toujours savoir quoi dire ou de tout faire correctement.
+
+Il s'agit aussi d'apprendre à se comprendre, de faire de la place à l'autre, de rire ensemble et de continuer à avancer même quand tout n'est pas simple.
+
+Merci de montrer qu'on peut construire quelque chose de solide sans avoir besoin d'être parfaits. Il faut de la patience, de la compréhension et probablement beaucoup d'humour… surtout avec Olivier. 😂💐
+
+Bon, fin de la séance de taquinerie. Allez lui dire quelque chose de gentil aussi, sinon il va déposer une plainte auprès du service client de ce site. 💗`
+  }
+};
+
+let catFed = false;
+let riddleWon = false;
+
+function checkRiddle(answer) {
+  const feedback = document.getElementById("riddleFeedback");
+  if (answer === "carotte") {
+    riddleWon = true;
+    feedback.textContent = "Exactement ! 🥕 Vous avez trouvé !";
+    document.getElementById("riddleSuccess").classList.remove("hidden");
+  } else {
+    feedback.textContent = "Oups, ce n'est pas ça ! 😂 Essayez encore, Isabelle.";
+  }
+}
+
+function goToLevel(level) {
+  if (level === 2 && !riddleWon) return;
+  if (level === 3 && !catFed) return;
+
+  document.getElementById("level1").classList.toggle("hidden", level !== 1);
+  document.getElementById("level2").classList.toggle("hidden", level !== 2);
+  document.getElementById("level3").classList.toggle("hidden", level !== 3);
+
+  for (let i = 1; i <= 3; i++) {
+    document.getElementById("dot" + i).classList.toggle("active", i === level);
+  }
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function feedCat() {
+  if (catFed) return;
+  catFed = true;
+
+  document.getElementById("catFace").textContent = "😻";
+  document.getElementById("catCaption").textContent = "MIAOU ! Je vous adore !";
+  document.getElementById("catSpeech").textContent =
+    "Enfin, à manger ! Isabelle est officiellement ma personne préférée. 🥹";
+  document.getElementById("catFood").textContent = "🐟 ✨";
+  document.getElementById("catFeedback").textContent =
+    "Le chat est heureux. Vous avez gagné son cœur. Et son estomac. 😂";
+  document.getElementById("feedButton").classList.add("hidden");
+  document.getElementById("catSuccess").classList.remove("hidden");
+}
+
+function showMessage(feeling) {
+  const box = document.getElementById("personalMessage");
+  let selected;
+
+  if (feeling === "random") {
+    const keys = Object.keys(messages);
+    selected = messages[keys[Math.floor(Math.random() * keys.length)]];
+  } else {
+    selected = messages[feeling];
+  }
+
+  document.getElementById("messageTitle").textContent = selected.title;
+  document.getElementById("messageText").textContent = selected.text;
+  box.classList.remove("hidden");
+
+  box.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function resetGame() {
+  riddleWon = false;
+  catFed = false;
+
+  document.getElementById("riddleFeedback").textContent = "";
+  document.getElementById("riddleSuccess").classList.add("hidden");
+
+  document.getElementById("catFace").textContent = "🐱";
+  document.getElementById("catCaption").textContent = "Miaou… j'ai faim !";
+  document.getElementById("catSpeech").textContent =
+    "Madame Isabelle, un petit MEOW, s'il vous plaît ? 🥺";
+  document.getElementById("catFood").textContent = "🍽️";
+  document.getElementById("catFeedback").textContent = "";
+  document.getElementById("feedButton").classList.remove("hidden");
+  document.getElementById("catSuccess").classList.add("hidden");
+  document.getElementById("personalMessage").classList.add("hidden");
+
+  goToLevel(1);
+}
+</script>
+
+</body>
+</html>
