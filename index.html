@@ -681,6 +681,7 @@ function showMessage(feeling) {
   box.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
+
 function resetGame() {
   riddleWon = false;
   catFed = false;
@@ -699,6 +700,32 @@ function resetGame() {
   document.getElementById("personalMessage").classList.add("hidden");
 
   goToLevel(1);
+}
+
+// NEW FUNCTION: FLOWERS RAIN 🌸
+function rainFlowers() {
+  const flowers = ["🌸", "🌷", "🌼", "🌺", "💮", "🌻"];
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  document.getElementById("flowerMessage").classList.remove("hidden");
+
+  if (reducedMotion) return;
+
+  for (let i = 0; i < 32; i++) {
+    const flower = document.createElement("span");
+    flower.className = "flower-rain";
+    flower.textContent =
+      flowers[Math.floor(Math.random() * flowers.length)];
+    flower.style.left = Math.random() * 100 + "vw";
+    flower.style.fontSize = (18 + Math.random() * 20) + "px";
+    flower.style.animationDelay = (Math.random() * 1.8) + "s";
+    flower.style.animationDuration = (2.5 + Math.random() * 2) + "s";
+
+    document.body.appendChild(flower);
+    flower.addEventListener("animationend", () => flower.remove());
+  }
 }
 </script>
 
