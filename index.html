@@ -10,7 +10,6 @@
 :root {
   --pink: #f5c9d9;
   --rose: #b84f78;
-  --cream: #fffaf4;
   --green: #66846b;
   --ink: #51434b;
 }
@@ -50,8 +49,8 @@ button { font: inherit; }
 }
 
 @keyframes fall {
-  0% { transform: translateY(-50px) rotate(0deg); }
-  100% { transform: translateY(110vh) rotate(250deg); }
+  from { transform: translateY(-50px) rotate(0deg); }
+  to { transform: translateY(110vh) rotate(250deg); }
 }
 
 .page {
@@ -70,12 +69,12 @@ button { font: inherit; }
 }
 
 .card {
-  background: rgba(255, 255, 255, .89);
-  border: 1px solid rgba(206, 157, 176, .35);
+  background: rgba(255,255,255,.89);
+  border: 1px solid rgba(206,157,176,.35);
   border-radius: 28px;
-  padding: clamp(22px, 5vw, 42px);
+  padding: clamp(22px,5vw,42px);
   text-align: center;
-  box-shadow: 0 12px 38px rgba(132, 83, 104, .10);
+  box-shadow: 0 12px 38px rgba(132,83,104,.10);
 }
 
 .level-label {
@@ -89,7 +88,7 @@ button { font: inherit; }
 
 h1 {
   font-family: Georgia, serif;
-  font-size: clamp(32px, 7vw, 48px);
+  font-size: clamp(32px,7vw,48px);
   line-height: 1.13;
   font-weight: normal;
   margin: 8px 0 16px;
@@ -98,7 +97,7 @@ h1 {
 h2 {
   font-family: Georgia, serif;
   font-weight: normal;
-  font-size: clamp(25px, 5vw, 34px);
+  font-size: clamp(25px,5vw,34px);
   line-height: 1.25;
   margin: 10px 0 16px;
 }
@@ -117,10 +116,7 @@ p {
   margin: 18px 0;
 }
 
-.game-icon {
-  font-size: 70px;
-  margin: 8px 0;
-}
+.game-icon { font-size: 70px; margin: 8px 0; }
 
 .question {
   font-size: 19px;
@@ -130,7 +126,7 @@ p {
 
 .options {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2,minmax(0,1fr));
   gap: 12px;
   margin: 20px auto;
   max-width: 510px;
@@ -161,7 +157,7 @@ p {
   background: var(--rose);
   font-weight: bold;
   margin: 8px 4px;
-  box-shadow: 0 5px 12px rgba(184, 79, 120, .16);
+  box-shadow: 0 5px 12px rgba(184,79,120,.16);
 }
 
 .main-button:hover, .main-button:focus-visible {
@@ -227,7 +223,7 @@ button:focus-visible {
 
 .feelings {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2,minmax(0,1fr));
   gap: 11px;
   margin: 24px 0;
 }
@@ -289,6 +285,51 @@ button:focus-visible {
   color: #917d87;
 }
 
+/* CLICKABLE FLOWERS */
+.clickable-flowers {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.flower-button {
+  border: none;
+  background: transparent;
+  font-size: 38px;
+  padding: 5px;
+  cursor: pointer;
+  transition: transform .2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.flower-button:hover {
+  transform: scale(1.25) rotate(-10deg);
+}
+
+/* FLOWERS FALL ACROSS THE SCREEN */
+.flower-rain {
+  position: fixed;
+  top: -55px;
+  z-index: 9999;
+  pointer-events: none;
+  user-select: none;
+  animation: flowerRain var(--duration,3.5s) linear forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes flowerRain {
+  0% {
+    transform: translate3d(0,0,0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--drift,30px),110vh,0) rotate(540deg);
+    opacity: .25;
+  }
+}
+
 footer {
   text-align: center;
   color: #917d87;
@@ -305,12 +346,8 @@ footer {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-  }
+  .falling, .flower-rain { animation: none !important; }
+  *, *::before, *::after { transition-duration: .01ms !important; }
 }
 </style>
 </head>
@@ -336,7 +373,7 @@ footer {
     <span id="dot3"></span>
   </div>
 
-  <!-- LEVEL 1: THE FOOD RIDDLE -->
+  <!-- LEVEL 1: FOOD RIDDLE -->
   <section class="card" id="level1">
     <div class="level-label">Niveau 1 · Le défi gourmand 🍓</div>
     <h1>Bonjour Isabelle ! 🌷</h1>
@@ -380,7 +417,7 @@ footer {
     <p class="tiny-note">Indice : Bugs Bunny connaît la réponse. 🐰</p>
   </section>
 
-  <!-- LEVEL 2: THE HUNGRY CAT -->
+  <!-- LEVEL 2: HUNGRY CAT -->
   <section class="card hidden" id="level2">
     <div class="level-label">Niveau 2 · Le chat affamé 🐾</div>
     <h2>Une mission très importante, Isabelle.</h2>
@@ -472,26 +509,52 @@ footer {
     <div id="personalMessage" class="hidden" aria-live="polite">
       <div class="flower-line">🌸 🍃 🌷 🍃 🌸</div>
       <h2 id="messageTitle"></h2>
+
       <div class="message-box">
         <p id="messageText"></p>
       </div>
 
-     
-<div class="final-note">
-  <p class="level-label">UN PETIT RAPPEL,</p>
-  <h2>JUSTE POUR VOUS 💗</h2>
+      <!-- SHORT APPRECIATION ENDING -->
+      <div class="final-note">
+        <p class="level-label">UN PETIT RAPPEL,</p>
+        <h2>JUSTE POUR VOUS 💗</h2>
 
-  <p>
-    Isabelle, il n'y a pas besoin d'une occasion spéciale pour vous apprécier.
-    Vous méritez d'être appréciée, aimée et célébrée chaque jour,
-    simplement pour la personne merveilleuse que vous êtes. 🌷
-  </p>
+        <p>
+          Isabelle, il n'y a pas besoin d'une occasion spéciale
+          pour vous apprécier. Vous méritez d'être aimée,
+          appréciée et célébrée chaque jour, simplement pour
+          la personne merveilleuse que vous êtes. 🌷
+        </p>
 
-  <p class="signature">
-    Pas besoin d'occasion. Vous méritez cette douceur tous les jours. 💕
-  </p>
-</div>
-      
+        <p class="signature">
+          Pas besoin d'occasion. Vous méritez cette douceur tous les jours. 💕
+        </p>
+
+        <div class="flower-line">Choisissez votre fleur préférée 🌸</div>
+
+        <!-- CLICK ANY FLOWER TO MAKE FLOWERS RAIN -->
+        <div class="clickable-flowers">
+          <button class="flower-button" onclick="rainFlowers(event)" aria-label="Faire pleuvoir des fleurs">🌷</button>
+          <button class="flower-button" onclick="rainFlowers(event)" aria-label="Faire pleuvoir des fleurs">🌸</button>
+          <button class="flower-button" onclick="rainFlowers(event)" aria-label="Faire pleuvoir des fleurs">💐</button>
+          <button class="flower-button" onclick="rainFlowers(event)" aria-label="Faire pleuvoir des fleurs">🌼</button>
+          <button class="flower-button" onclick="rainFlowers(event)" aria-label="Faire pleuvoir des fleurs">🌺</button>
+        </div>
+
+        <p class="tiny-note">Cliquez sur une fleur et regardez le jardin ! ✨</p>
+
+        <div id="flowerMessage" class="hidden" aria-live="polite">
+          <div style="font-size:35px;margin:15px 0">🌷 🌸 💐 🌼 🌺</div>
+          <h2>Et n'oubliez pas de vous apprécier aussi ! 💕</h2>
+          <p>
+            Vous prenez soin des autres, alors gardez aussi
+            un peu de douceur pour vous-même.
+            Vous le méritez chaque jour, Isabelle. 🌸
+          </p>
+          <p class="signature">Avec beaucoup d'affection. 💗</p>
+        </div>
+      </div>
+
       <button class="main-button" onclick="showMessage('random')">
         Encore un petit message 💌
       </button>
@@ -624,6 +687,7 @@ let riddleWon = false;
 
 function checkRiddle(answer) {
   const feedback = document.getElementById("riddleFeedback");
+
   if (answer === "carotte") {
     riddleWon = true;
     feedback.textContent = "Exactement ! 🥕 Vous avez trouvé !";
@@ -681,6 +745,41 @@ function showMessage(feeling) {
   box.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
+/* CLICK A FLOWER TO MAKE FLOWERS RAIN */
+function rainFlowers(event) {
+  const flowers = ["🌸", "🌷", "🌼", "🌺", "💮", "🌻", "💐", "🌹"];
+  const message = document.getElementById("flowerMessage");
+
+  if (message) {
+    message.classList.remove("hidden");
+  }
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  // Make each click trigger a new shower.
+  // Limit the number of simultaneous flowers to keep the page smooth.
+  const existingFlowers = document.querySelectorAll(".flower-rain");
+  const available = Math.max(0, 100 - existingFlowers.length);
+  const count = Math.min(60, available);
+
+  for (let i = 0; i < count; i++) {
+    const flower = document.createElement("span");
+
+    flower.className = "flower-rain";
+    flower.setAttribute("aria-hidden", "true");
+    flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+    flower.style.left = Math.random() * 100 + "vw";
+    flower.style.fontSize = (20 + Math.random() * 24) + "px";
+    flower.style.setProperty("--duration", (2.5 + Math.random() * 2) + "s");
+    flower.style.setProperty("--drift", (Math.random() * 160 - 80) + "px");
+    flower.style.animationDelay = (Math.random() * 0.8) + "s";
+
+    document.body.appendChild(flower);
+    flower.addEventListener("animationend", () => flower.remove(), { once: true });
+  }
+}
 
 function resetGame() {
   riddleWon = false;
@@ -698,48 +797,11 @@ function resetGame() {
   document.getElementById("feedButton").classList.remove("hidden");
   document.getElementById("catSuccess").classList.add("hidden");
   document.getElementById("personalMessage").classList.add("hidden");
+  document.getElementById("flowerMessage").classList.add("hidden");
+
+  document.querySelectorAll(".flower-rain").forEach(flower => flower.remove());
 
   goToLevel(1);
-}
-
-// NEW FUNCTION: FLOWERS RAIN 🌸
-
-function rainFlowers() {
-  const flowers = ["🌸", "🌷", "🌼", "🌺", "💮", "🌻", "💐", "🌹"];
-
-  document.getElementById("flowerMessage")?.classList.remove("hidden");
-
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-  for (let i = 0; i < 60; i++) {
-    const flower = document.createElement("span");
-    flower.className = "flower-rain";
-    flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
-    flower.style.left = Math.random() * 100 + "vw";
-    flower.style.fontSize = (20 + Math.random() * 24) + "px";
-    flower.style.animationDelay = Math.random() * 1.5 + "s";
-    flower.style.animationDuration = (2.5 + Math.random() * 2) + "s";
-
-    document.body.appendChild(flower);
-    flower.addEventListener("animationend", () => flower.remove());
-  }
-}
-
-  if (reducedMotion) return;
-
-  for (let i = 0; i < 32; i++) {
-    const flower = document.createElement("span");
-    flower.className = "flower-rain";
-    flower.textContent =
-      flowers[Math.floor(Math.random() * flowers.length)];
-    flower.style.left = Math.random() * 100 + "vw";
-    flower.style.fontSize = (18 + Math.random() * 20) + "px";
-    flower.style.animationDelay = (Math.random() * 1.8) + "s";
-    flower.style.animationDuration = (2.5 + Math.random() * 2) + "s";
-
-    document.body.appendChild(flower);
-    flower.addEventListener("animationend", () => flower.remove());
-  }
 }
 </script>
 
