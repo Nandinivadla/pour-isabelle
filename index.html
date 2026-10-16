@@ -685,29 +685,25 @@ Bon, fin de la séance de taquinerie. Allez lui dire quelque chose de gentil aus
 let catFed = false;
 let riddleWon = false;
 
+
 function checkRiddle(answer) {
   const feedback = document.getElementById("riddleFeedback");
 
   if (answer === "carotte") {
     riddleWon = true;
-    feedback.textContent = "Exactement ! 🥕 Vous avez trouvé !";
+    feedback.textContent = "Bravo Isabelle ! 🥕 Niveau suivant !";
+
     document.getElementById("riddleSuccess").classList.remove("hidden");
+
+    setTimeout(() => {
+      goToLevel(2);
+    }, 900);
   } else {
-    feedback.textContent = "Oups, ce n'est pas ça ! 😂 Essayez encore, Isabelle.";
+    feedback.textContent =
+      "Oups ! 😂 Essayez encore, Isabelle.";
   }
 }
 
-function goToLevel(level) {
-  if (level === 2 && !riddleWon) return;
-  if (level === 3 && !catFed) return;
-
-  document.getElementById("level1").classList.toggle("hidden", level !== 1);
-  document.getElementById("level2").classList.toggle("hidden", level !== 2);
-  document.getElementById("level3").classList.toggle("hidden", level !== 3);
-
-  for (let i = 1; i <= 3; i++) {
-    document.getElementById("dot" + i).classList.toggle("active", i === level);
-  }
 
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
